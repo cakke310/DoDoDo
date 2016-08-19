@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="gray">#777777</color>
+    <color name="bg_tab_pressed">#6633b5e5</color>
+    <color name="bg_tab_pressed2">#ff3898ff</color>
+    <!-- 蓝色 -->
+    <color name="dosnapdack">#222726</color>
+    <color name="dosnapgray">#eeeeee</color>
+    <color name="dosnapgrayd9">#d9d9d9</color>
+    <color name="dosnapblue">#2c4278</color>
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="default_add_label">#0099e0</color>
+    <color name="textcolor_gray">#777777</color>
+    <color name="content_gray">#555555</color>
+    <color name="laudnum_gray">#a4a4a4</color>
+    <color name="common_background">#f5f3f0</color>
+    <color name="popupwin_background">#66000000</color>
+    <color name="divider_gray">#dcdcdc</color>
+    <color name="main_blue">#168bd9</color>
+    <!-- action_bar 的颜色 -->
+    <color name="camerasdk_action_bar">#34343a</color>
+    <!-- ff5a5f -->
+    <!-- 所有的边线 -->
+    <color name="camerasdk_divider_color">#cdcdcd</color>
+    <color name="camerasdk_txt_normal">#ffffff</color>
+    <color name="camerasdk_txt_selected">#fcb840</color>
+</resources>

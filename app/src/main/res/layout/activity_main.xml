@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_weight="1">
+    </FrameLayout>
+
+    <RadioGroup
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            style="@style/tabStyle"
+            android:id="@+id/rb_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bar_main_bg"
+            />
+
+        <RadioButton
+            style="@style/tabStyle"
+            android:id="@+id/rb_serarch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bar_search_bg"
+            />
+
+        <RadioButton
+            style="@style/tabStyle"
+            android:id="@+id/rb_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bar_camera_bg"
+            />
+
+        <RadioButton
+            style="@style/tabStyle"
+            android:id="@+id/rb_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bar_message_bg"
+            />
+
+        <RadioButton
+            style="@style/tabStyle"
+            android:id="@+id/rb_my"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bar_my_bg"
+            />
+    </RadioGroup>
+
+
+</RelativeLayout>
