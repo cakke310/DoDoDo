@@ -14,6 +14,7 @@
     </FrameLayout>
 
     <RadioGroup
+        android:id="@+id/rbs_fragment"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -21,40 +22,30 @@
         <RadioButton
             style="@style/tabStyle"
             android:id="@+id/rb_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:background="@drawable/bar_main_bg"
             />
 
         <RadioButton
             style="@style/tabStyle"
             android:id="@+id/rb_serarch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:background="@drawable/bar_search_bg"
             />
 
         <RadioButton
             style="@style/tabStyle"
             android:id="@+id/rb_camera"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:background="@drawable/bar_camera_bg"
             />
 
         <RadioButton
             style="@style/tabStyle"
             android:id="@+id/rb_message"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:background="@drawable/bar_message_bg"
             />
 
         <RadioButton
             style="@style/tabStyle"
             android:id="@+id/rb_my"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:background="@drawable/bar_my_bg"
             />
     </RadioGroup>
