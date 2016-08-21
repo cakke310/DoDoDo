@@ -7,13 +7,13 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 
-import com.doruemi.application.App;
+import com.doruemi.application.BaseApplication;
 
 
 public class UIUtils {
 
 	public static Context getContext() {
-		return App.getContext();
+		return BaseApplication.getContext();
 	}
 
 
