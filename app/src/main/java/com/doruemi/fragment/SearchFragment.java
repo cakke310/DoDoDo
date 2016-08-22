@@ -78,9 +78,14 @@ public class SearchFragment extends BaseFragment {
             @Override
             public void onResponse(SearchBean searchBean, int id) {
                 LogUtil.e("searchBean---"+ searchBean.getCode());
+                for (int i=0; i<searchBean.getList().size(); i++){
+                    if(i%3==2){
+                        LogUtil.e(i+"");
+                    }
+                }
 
-                SearchListAdapter searchListAdapter =  new SearchListAdapter(searchBean.getList(), getActivity().getApplicationContext());
-                list.setAdapter(searchListAdapter);
+//                SearchListAdapter searchListAdapter =  new SearchListAdapter(searchBean.getList(), getActivity().getApplicationContext());
+//                list.setAdapter(searchListAdapter);
             }
         });
 //        OkHttpUtils.get().url(url).build().execute(new StringCallback() {
