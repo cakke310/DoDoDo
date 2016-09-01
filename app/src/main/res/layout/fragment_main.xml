@@ -7,36 +7,39 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="@dimen/DIMEN_42DP" >
 
-        <TextView
-            android:id="@+id/addFriend"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:gravity="center"
-            android:paddingLeft="20dp"
-            android:text="@string/add"
-            android:textSize="20sp" />
+        <ImageView
+            android:id="@+id/imgBtn_Search"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:contentDescription="@string/search"
+            android:paddingLeft="@dimen/DIMEN_30DP"
+            android:src="@drawable/searchicon" />
 
-        <TextView
-            android:id="@+id/opBtn"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
+        <ImageView
+            android:paddingTop="@dimen/DIMEN_10DP"
+            android:paddingBottom="@dimen/DIMEN_10DP"
+            android:id="@+id/imgBtn_Message"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:gravity="center_vertical"
-            android:text="@string/option"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textColor="@android:color/black"
-            android:visibility="visible" />
+            android:background="@null"
+            android:contentDescription="@string/message"
+            android:paddingRight="@dimen/DIMEN_24DP"
+            android:src="@drawable/message_nor" />
 
 
-        <!--<com.doruemi.widget.PagerTab-->
-            <!--android:id="@+id/tabs"-->
-            <!--android:layout_width="160dp"-->
-            <!--android:layout_height="42dp"-->
-            <!--android:layout_marginLeft="20dp"-->
-            <!--android:layout_marginRight="20dp"-->
-            <!--android:layout_centerHorizontal="true"/>-->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="@dimen/DIMEN_160DP"
+            android:layout_height="@dimen/DIMEN_42DP"
+            android:layout_centerHorizontal="true"
+            app:tabIndicatorColor="@color/bg_tab_pressed2"
+            app:tabSelectedTextColor="@color/black"
+            app:tabTextColor="@color/gray">
+        </android.support.design.widget.TabLayout>
     </RelativeLayout>
 
     <!-- viewpager -->
@@ -46,51 +49,10 @@
         android:layout_height="1px"
         android:background="@android:color/darker_gray" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
 
-        <!--<android.support.v4.view.ViewPager-->
-            <!--android:id="@+id/pager"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent" />-->
-        
-        <LinearLayout
-            android:id="@+id/ll_upload"
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:visibility="gone"
-            android:orientation="vertical" >
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <!--<com.xitek.dosnap.view.AvatarView-->
-                    <!--android:id="@+id/avatarview"-->
-                    <!--android:layout_width="64dp"-->
-                    <!--android:layout_height="64dp"-->
-                    <!--android:layout_gravity="center" >-->
-                <!--</com.xitek.dosnap.view.AvatarView>-->
-
-                <!--<TextView-->
-                    <!--android:layout_width="64dp"-->
-                    <!--android:layout_height="64dp"-->
-                    <!--android:layout_toRightOf="@+id/avatarview"-->
-                    <!--android:gravity="center"-->
-                    <!--android:text="@string/uploading" />-->
-            </RelativeLayout>
-
-            <!--<ProgressBar-->
-                <!--android:id="@+id/uploadProgressBar"-->
-                <!--style="?android:attr/progressBarStyleHorizontal"-->
-                <!--android:progressDrawable="@drawable/progressbar"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="3dp"-->
-                <!--android:layout_marginBottom="1dp"/>-->
-        </LinearLayout>
-        
-    </RelativeLayout>
+            android:layout_height="match_parent" />
 
 </LinearLayout>

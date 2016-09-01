@@ -35,6 +35,4 @@ public class BtnFragmentFactory {
         }
         return mBaseFragment;
     }
-
-
 }
