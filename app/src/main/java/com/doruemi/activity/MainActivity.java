@@ -68,9 +68,8 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
                 changeFragment(BtnFragmentFactory.TAB_SEARCH);
                 break;
             case R.id.rb_camera:
-                changeFragment(BtnFragmentFactory.TAB_MESSAGE);
-
-
+//                changeFragment(BtnFragmentFactory.TAB_MESSAGE);
+                break;
             case R.id.rb_message:
                 changeFragment(BtnFragmentFactory.TAB_MESSAGE);
                 break;

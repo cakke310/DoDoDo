@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 
 import com.doruemi.R;
+import com.doruemi.util.LogUtil;
 
 import butterknife.ButterKnife;
 
@@ -44,7 +45,7 @@ public class MainFragment extends BaseFragment{
 
     @Override
     protected void initData() {
-        pager.setAdapter(new FragmentPagerAdapter(getActivity().getSupportFragmentManager()) {
+        pager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             private String[] mTitles = new String[]{"关注", "精选"};
 
             @Override
@@ -63,6 +64,7 @@ public class MainFragment extends BaseFragment{
             }
         });
         tabLayout.setupWithViewPager(pager);
+        pager.setOffscreenPageLimit(2);
     }
 
     @Override
