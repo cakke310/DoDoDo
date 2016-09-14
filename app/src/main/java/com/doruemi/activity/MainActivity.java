@@ -45,7 +45,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
     private void initView() {
         rbs_fragment = (RadioGroup) findViewById(R.id.rbs_fragment);
-
+        rbs_fragment.check(R.id.rb_main);
     }
 
 

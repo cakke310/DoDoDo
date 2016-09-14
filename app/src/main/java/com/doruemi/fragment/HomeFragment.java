@@ -1,12 +1,25 @@
 package com.doruemi.fragment;
 
+import android.widget.ListView;
+
 import com.doruemi.R;
+import com.doruemi.bean.MainPhotoBean;
+import com.doruemi.protocol.PhotoProtocol;
 import com.doruemi.util.LogUtil;
+import com.google.gson.Gson;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.zhy.http.okhttp.callback.StringCallback;
+
+import okhttp3.Call;
 
 /**
  * Created by Administrator on 2016/9/1.
  */
 public class HomeFragment extends BaseFragment {
+
+    private PullToRefreshListView listView;
+
     @Override
     protected void initListener() {
 
@@ -14,12 +27,44 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-
+        getHttp();
     }
+
+    private void getHttp() {
+        PhotoProtocol.getHomeAttention(stringCallback, page);
+    }
+
+    private StringCallback stringCallback = new StringCallback() {
+        @Override
+        public void onError(Call call, Exception e, int id) {
+            LogUtil.e(e.toString());
+        }
+
+        @Override
+        public void onResponse(String response, int id) {
+            MainPhotoBean mainPhotoBean = new Gson().fromJson(response, MainPhotoBean.class);
+        }
+    };
+
+
 
     @Override
     protected void initView() {
-        LogUtil.e("homeFragment init");
+        listView = (PullToRefreshListView) currentView.findViewById(R.id.list);
+        ListView listv = listView.getRefreshableView();
+        listView.setScrollingWhileRefreshingEnabled(true);
+        listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+                PullToRefreshBase.Mode mode = listView.getCurrentMode();
+                if(mode == PullToRefreshBase.Mode.PULL_FROM_END){
+                    page++;
+                }else {
+                    page = 1;
+                }
+                PhotoProtocol.getHomeAttention(stringCallback, page);
+            }
+        });
     }
 
     @Override

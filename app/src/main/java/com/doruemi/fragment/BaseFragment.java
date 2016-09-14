@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 public abstract class BaseFragment extends Fragment{
 
     public View currentView;
+    public int page = 1;
 
 
     @Override
