@@ -1,5 +1,7 @@
 package com.doruemi.bean;
 
+import org.w3c.dom.Comment;
+
 import java.util.List;
 
 /**
@@ -17,8 +19,7 @@ public class MainPhotoBean {
      * matchlist : [{"id":"134","title":"晒简单生活，赢上海简单生活音乐节门票！！","imgurl":"upload/evnets/2016/09/13/1473743515.png","eventtype":"6"},{"id":"133","title":"【征稿标签：黄】更多色，要黄图","imgurl":"upload/evnets/2016/09/06/1473152727.jpg","eventtype":"3"},{"id":"131","title":"感受天空的色彩，拍下你眼里的世界！！","imgurl":"upload/evnets/2016/08/15/1471236606.png","eventtype":"3"}]
      * matchhis : 1
      * unfollowing : {"userid":"1791","id":"653857","username":"Cher","isdaren":"1","content":"","address":"","imgurl":"upload/pics/201608/1/1791/1471705687.jpg","height":"480","laud":"6","comment":"0","addtime":"1471705687"}
-     */
-
+*/
     private String ErrorMsg;
     private String code;
     private int flag;
@@ -257,7 +258,7 @@ public class MainPhotoBean {
         private String haslaud;
         private String isdaren;
         private String isdownload;
-        private List<?> comments;
+        private List<Comment> comments;
 
         public String getId() {
             return id;
@@ -375,7 +376,7 @@ public class MainPhotoBean {
             return comments;
         }
 
-        public void setComments(List<?> comments) {
+        public void setComments(List<Comment> comments) {
             this.comments = comments;
         }
     }
@@ -416,6 +417,29 @@ public class MainPhotoBean {
 
         public void setEventtype(String eventtype) {
             this.eventtype = eventtype;
+        }
+    }
+
+    public static class Comment {
+        public int cid;
+        public int article_id;
+        public int pid;
+        public int userid;
+        public String username;
+        public String content;
+        public long addtime;
+
+        @Override
+        public String toString() {
+            return "Comment{" +
+                    "cid=" + cid +
+                    ", article_id=" + article_id +
+                    ", pid=" + pid +
+                    ", userid=" + userid +
+                    ", username='" + username + '\'' +
+                    ", content='" + content + '\'' +
+                    ", addtime=" + addtime +
+                    '}';
         }
     }
 }

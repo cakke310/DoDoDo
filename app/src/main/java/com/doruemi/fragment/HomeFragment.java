@@ -3,6 +3,7 @@ package com.doruemi.fragment;
 import android.widget.ListView;
 
 import com.doruemi.R;
+import com.doruemi.adapter.HomeListAdapter;
 import com.doruemi.bean.MainPhotoBean;
 import com.doruemi.protocol.PhotoProtocol;
 import com.doruemi.util.LogUtil;
@@ -10,6 +11,9 @@ import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.zhy.http.okhttp.callback.StringCallback;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 
@@ -19,6 +23,8 @@ import okhttp3.Call;
 public class HomeFragment extends BaseFragment {
 
     private PullToRefreshListView listView;
+    private List data;
+    private HomeListAdapter mAdapter;
 
     @Override
     protected void initListener() {
@@ -65,6 +71,8 @@ public class HomeFragment extends BaseFragment {
                 PhotoProtocol.getHomeAttention(stringCallback, page);
             }
         });
+        data = new ArrayList();
+        mAdapter = new HomeListAdapter(this.getActivity(), data);
     }
 
     @Override
