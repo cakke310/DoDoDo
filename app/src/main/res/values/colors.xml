@@ -3,27 +3,34 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="red_FF5454">#FF5454</color>
+    <color name="toastcolor">#CCFF7070</color>
 
     <color name="transparent">#00000000</color>
     <color name="black">#ff000000</color>
     <color name="white">#ffffffff</color>
     <color name="gray">#777777</color>
-    <color name="bg_tab_pressed">#6633b5e5</color>
-    <color name="bg_tab_pressed2">#ff3898ff</color>
     <!-- 蓝色 -->
     <color name="dosnapdack">#222726</color>
     <color name="dosnapgray">#eeeeee</color>
     <color name="dosnapgrayd9">#d9d9d9</color>
     <color name="dosnapblue">#2c4278</color>
     <color name="background_tab_pressed">#6633B5E5</color>
-    <color name="default_add_label">#0099e0</color>
     <color name="textcolor_gray">#777777</color>
+    <color name="text_gray">#303030</color>
+    <color name="text_gray2">#3c3c3c</color>
+    <color name="gray_4D4D4D">#4D4D4D</color>
+    <color name="text_gray3">#AFAFAF</color>
+    <color name="text_recommend_gray">#949494</color>
     <color name="content_gray">#555555</color>
     <color name="laudnum_gray">#a4a4a4</color>
+    <color name="gray_c5">#C5C5C5</color>
+    <color name="gray_4f5054">#4F5054</color>
+    <color name="gray_A0A0A0">#A0A0A0</color>
     <color name="common_background">#f5f3f0</color>
     <color name="popupwin_background">#66000000</color>
+    <color name="popupwin_background2">#88000000</color>
     <color name="divider_gray">#dcdcdc</color>
-    <color name="main_blue">#168bd9</color>
     <!-- action_bar 的颜色 -->
     <color name="camerasdk_action_bar">#34343a</color>
     <!-- ff5a5f -->
@@ -31,4 +38,12 @@
     <color name="camerasdk_divider_color">#cdcdcd</color>
     <color name="camerasdk_txt_normal">#ffffff</color>
     <color name="camerasdk_txt_selected">#fcb840</color>
+    <color name="message_gray">#F2F2F2</color>
+
+    <color name="default_add_label">#0099e0</color>
+    <color name="main_blue">#039ad9</color>
+    <color name="blue_cc0099e0">#cc0099e0</color>
+    <color name="blue_4eb4de">#4eb4de</color>
+    <color name="bg_tab_pressed">#6633b5e5</color>
+    <color name="bg_tab_pressed2">#ff3898ff</color>
 </resources>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#20000000">
+
+    <View
+        android:id="@+id/blank"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_300DP"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/DIMEN_26DP"
+            android:textSize="14sp"
+            android:text="@string/shareto"
+            android:textColor="@color/gray_c5"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/wechatshare"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:tag="click"
+                    android:drawableTop="@drawable/weixin"
+                    android:drawablePadding="@dimen/DIMEN_8DP"
+                    android:text="@string/weichat"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray_c5"/>
+
+                <TextView
+                    android:id="@+id/friendshare"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:tag="click"
+                    android:drawableTop="@drawable/friend"
+                    android:drawablePadding="@dimen/DIMEN_8DP"
+                    android:text="@string/quan"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray_c5"/>
+
+                <TextView
+                    android:id="@+id/weiboshare"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:tag="click"
+                    android:drawableTop="@drawable/weibo"
+                    android:drawablePadding="@dimen/DIMEN_8DP"
+                    android:text="@string/weibo"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray_c5"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/DIMEN_26DP"
+                android:weightSum="3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/blacklist"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:tag="click"
+                    android:drawableTop="@drawable/icon_blacklist"
+                    android:drawablePadding="@dimen/DIMEN_8DP"
+                    android:text="@string/blacklist"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray_c5"/>
+
+                <TextView
+                    android:id="@+id/report"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:tag="click"
+                    android:drawableTop="@drawable/icon_report"
+                    android:drawablePadding="@dimen/DIMEN_8DP"
+                    android:text="@string/toreport"
+                    android:textSize="12sp"
+                    android:textColor="@color/gray_c5"/>
+
+                <TextView
+                    android:id="@+id/del"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:tag="click"
+                    android:drawableTop="@drawable/icon_delete"
+                    android:drawablePadding="@dimen/DIMEN_8DP"
+                    android:text="@string/del"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    android:textColor="@color/gray_c5"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/DIMEN_10DP"
+            android:padding="@dimen/DIMEN_10DP"
+            android:gravity="center"
+            android:textColor="@color/gray_c5"
+            android:textSize="14sp"
+            android:text="@string/cancel"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

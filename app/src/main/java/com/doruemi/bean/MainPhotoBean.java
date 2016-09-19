@@ -40,7 +40,7 @@ public class MainPhotoBean {
      * addtime : 1471705687
      */
 
-    private UnfollowingEntity unfollowing;
+    private UnfollowInfo unfollowing;
     /**
      * id : 668058
      * userid : 6192
@@ -59,7 +59,7 @@ public class MainPhotoBean {
      * comments : []
      */
 
-    private List<ListEntity> list;
+    private List<PhotoInfoBean> list;
     /**
      * id : 134
      * title : 晒简单生活，赢上海简单生活音乐节门票！！
@@ -67,7 +67,7 @@ public class MainPhotoBean {
      * eventtype : 6
      */
 
-    private List<MatchlistEntity> matchlist;
+    private List<MatchListBean> matchlist;
 
     public String getErrorMsg() {
         return ErrorMsg;
@@ -117,31 +117,31 @@ public class MainPhotoBean {
         this.matchhis = matchhis;
     }
 
-    public UnfollowingEntity getUnfollowing() {
+    public UnfollowInfo getUnfollowing() {
         return unfollowing;
     }
 
-    public void setUnfollowing(UnfollowingEntity unfollowing) {
+    public void setUnfollowing(UnfollowInfo unfollowing) {
         this.unfollowing = unfollowing;
     }
 
-    public List<ListEntity> getList() {
+    public List<PhotoInfoBean> getList() {
         return list;
     }
 
-    public void setList(List<ListEntity> list) {
+    public void setList(List<PhotoInfoBean> list) {
         this.list = list;
     }
 
-    public List<MatchlistEntity> getMatchlist() {
+    public List<MatchListBean> getMatchlist() {
         return matchlist;
     }
 
-    public void setMatchlist(List<MatchlistEntity> matchlist) {
+    public void setMatchlist(List<MatchListBean> matchlist) {
         this.matchlist = matchlist;
     }
 
-    public static class UnfollowingEntity {
+    public static class UnfollowInfo {
         private String userid;
         private String id;
         private String username;
@@ -243,36 +243,36 @@ public class MainPhotoBean {
         }
     }
 
-    public static class ListEntity {
-        private String id;
-        private String userid;
-        private String username;
-        private String content;
-        private String address;
-        private String imgurl;
-        private String height;
-        private String laud;
-        private String comment;
-        private String addtime;
-        private String following;
-        private String haslaud;
-        private String isdaren;
-        private String isdownload;
+    public static class PhotoInfoBean {
+        public int id;
+        public int userid;
+        public String username;
+        public String content;
+        public String address;
+        public String imgurl;
+        public int height;
+        public int laud;
+        public int comment;
+        public String addtime;
+        public int following;
+        public int haslaud;
+        public int isdaren;
+        public int isdownload;
         private List<Comment> comments;
 
-        public String getId() {
+        public int getId() {
             return id;
         }
 
-        public void setId(String id) {
+        public void setId(int id) {
             this.id = id;
         }
 
-        public String getUserid() {
+        public int getUserid() {
             return userid;
         }
 
-        public void setUserid(String userid) {
+        public void setUserid(int userid) {
             this.userid = userid;
         }
 
@@ -308,27 +308,27 @@ public class MainPhotoBean {
             this.imgurl = imgurl;
         }
 
-        public String getHeight() {
+        public int getHeight() {
             return height;
         }
 
-        public void setHeight(String height) {
+        public void setHeight(int height) {
             this.height = height;
         }
 
-        public String getLaud() {
+        public int getLaud() {
             return laud;
         }
 
-        public void setLaud(String laud) {
+        public void setLaud(int laud) {
             this.laud = laud;
         }
 
-        public String getComment() {
+        public int getComment() {
             return comment;
         }
 
-        public void setComment(String comment) {
+        public void setComment(int comment) {
             this.comment = comment;
         }
 
@@ -340,35 +340,35 @@ public class MainPhotoBean {
             this.addtime = addtime;
         }
 
-        public String getFollowing() {
+        public int getFollowing() {
             return following;
         }
 
-        public void setFollowing(String following) {
+        public void setFollowing(int following) {
             this.following = following;
         }
 
-        public String getHaslaud() {
+        public int getHaslaud() {
             return haslaud;
         }
 
-        public void setHaslaud(String haslaud) {
+        public void setHaslaud(int haslaud) {
             this.haslaud = haslaud;
         }
 
-        public String getIsdaren() {
+        public int getIsdaren() {
             return isdaren;
         }
 
-        public void setIsdaren(String isdaren) {
+        public void setIsdaren(int isdaren) {
             this.isdaren = isdaren;
         }
 
-        public String getIsdownload() {
+        public int getIsdownload() {
             return isdownload;
         }
 
-        public void setIsdownload(String isdownload) {
+        public void setIsdownload(int isdownload) {
             this.isdownload = isdownload;
         }
 
@@ -381,7 +381,7 @@ public class MainPhotoBean {
         }
     }
 
-    public static class MatchlistEntity {
+    public static class MatchListBean {
         private String id;
         private String title;
         private String imgurl;

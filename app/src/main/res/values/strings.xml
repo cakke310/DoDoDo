@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">doruemi</string>
+    <string name="app_name">dosnap</string>
     <string name="hello_world">Hello world!</string>
     <string name="settings">设置</string>
     <string name="slogan">用好照片  交新朋友</string>
@@ -26,7 +26,7 @@
     <string name="loginwechat">微信</string>
     <string name="nowechat">未检测到微信，无法使用微信登录</string>
     <string name="wechatcancel">微信未登录或微信授权失败</string>
-    <string name="logout">退出当前帐号</string>
+    <string name="logout">退出帐号</string>
     <string name="reg">注册</string>
     <string name="mailreg">邮箱注册</string>
     <string name="regsuccess">注册成功，请用新注册的用户名、密码登录</string>
@@ -38,6 +38,7 @@
     <string name="emailerror">不是合法的邮箱</string>
     <string name="emailused">邮箱已被使用，请用其他邮箱注册</string>
     <string name="inputuser">输入用户名</string>
+    <string name="inputaccount">请输入帐号</string>
     <string name="inputemail">输入注册邮箱</string>
     <string name="inputpass">请输入密码</string>
     <string name="inputpass2">再次输入密码</string>
@@ -68,7 +69,7 @@
     <string name="nomessage">没有相关通知</string>
     <string name="nohistory">当前没有活动</string>
     <string name="editor">编辑推荐</string>
-    <string name="usererror">意外错误，用户可能不存在</string>
+    <string name="usererror">意外错误，用户%s可能不存在</string>
     <string name="error">意外错误，可能存在内存不足</string>
     <string name="commentno">这张照片还无人评论，快来鼓励一下作者吧</string>
     <string name="comment">评论</string>
@@ -104,11 +105,12 @@
     <string name="activityname">活动名称：%1$s</string>
     <string name="activityshare">%1$s\n时间：%2$s\n地点：%3$s</string>
     <string name="activityshare2">%1$s\n>>http://app.dosnap.com/api/Share/sharematch?matchid=%2$s</string>
-	<string name="activityshare3">Dosnap活动预告：%1$s\n>>http://app.dosnap.com/api/Share/sharematch?matchid=%2$s</string>    
-	<string name="activityshare4">%1$s\n>>http://app.dosnap.com/api/Share/sharetopic?id=%2$s</string>
-	<string name="activityshareh5">%1$s\n>>%2$s</string>
+    <string name="activityshare3">Dosnap活动预告：%1$s\n>>http://app.dosnap.com/api/Share/sharematch?matchid=%2$s</string>
+    <string name="activityshare4">%1$s\n>>http://app.dosnap.com/api/Share/sharetopic?id=%2$s</string>
+    <string name="activityshareh5">%1$s\n>>%2$s</string>
     <string name="dateformat">yyyy年MM月dd日</string>
     <string name="dateformat2">yyyy年MM月dd日 HH:mm</string>
+    <string name="dateformat3">yyyy.MM.dd</string>
     <string name="sharemsg">简直是约拍利器啊！ %1$s 在dosnap发了一张大片，快来看看>>http://app.dosnap.com/api/Share/shareimg?arcid=%2$s</string>
     <string name="sharemsg2">我在dosnap分享了一张  %1$s 的作品。摄影，手机就够了！ 下载地址>>http://app.dosnap.com/api/Share/shareimg?arcid=%2$s</string>
     <string name="errortype">未知的活动类型，可能需要更新应用才能参与</string>
@@ -123,7 +125,7 @@
     <string name="nosinafans">没有找到互粉的新浪好友</string>
     <string name="nocall">没有粉丝或搜索无结果</string>
     <string name="home">Ta的主页</string>
-    <string name="myhome">我的主页</string>
+    <string name="myhome">个人主页</string>
     <string name="msgto">私信</string>
     <string name="activityon">正在进行</string>
     <string name="nomore">没有更多内容……</string>
@@ -134,15 +136,15 @@
     <string name="followformat">&lt;font color=black&gt;%1$s&lt;/font&gt; 关注了&lt;font color=black&gt;你&lt;/font&gt;</string>
     <string name="followformat2">&lt;font color=black&gt;%1$s&lt;/font&gt; 关注了 &lt;font color=black&gt;%2$s&lt;/font&gt; </string>
     <string name="laudformat">&lt;font color=black&gt;%1$s&lt;/font&gt; 赞了&lt;font color=black&gt;你&lt;/font&gt;的照片</string>
-    <string name="laudformat2">&lt;font color=black&gt;%1$s&lt;/font&gt; 赞了 &lt;font color=black&gt;%2$s&lt;/font&gt; 的照片</string>    
-	<string name="commentformat">&lt;font color=black&gt;%1$s&lt;/font&gt; 评论了你的照片</string>    
-	<string name="commentformat2">&lt;font color=black&gt;%1$s&lt;/font&gt; 评论了 &lt;font color=black&gt;%2$s&lt;/font&gt; 的照片</string>	
+    <string name="laudformat2">&lt;font color=black&gt;%1$s&lt;/font&gt; 赞了 &lt;font color=black&gt;%2$s&lt;/font&gt; 的照片</string>
+    <string name="commentformat">&lt;font color=black&gt;%1$s&lt;/font&gt; 评论了你的照片</string>
+    <string name="commentformat2">&lt;font color=black&gt;%1$s&lt;/font&gt; 评论了 &lt;font color=black&gt;%2$s&lt;/font&gt; 的照片</string>
     <string name="atformat">&lt;font color=black&gt;%1$s&lt;/font&gt; @了&lt;font color=black&gt;你&lt;/font&gt;</string>
     <string name="replyformat">&lt;font color=black&gt;%1$s&lt;/font&gt; %2$s</string>
     <string name="addfriend">添加好友</string>
     <string name="weibofriend">微博好友</string>
     <string name="lauduser">赞过的用户</string>
-    <string name="laudtip">给作者点个赞，鼓励一下ta吧</string>    
+    <string name="laudtip">给作者点个赞，鼓励一下ta吧</string>
     <string name="invite">邀请</string>
     <string name="invitejson">%1$s ,手机也能拍大片! DoSnap里搜 %2$s，加我！下载地址&amp;gt;&amp;gt;http://www.dosnap.com</string>
     <string name="invited">已邀请</string>
@@ -283,7 +285,7 @@
     <string name="exif_aperture">光圈</string>
     <string name="exif_isospeedratings">ISO</string>
     <string name="shareapp">推荐DoSnap给微信好友</string>
-    <string name="shareappset">推荐给微信朋友</string>
+    <string name="shareappset">分享给微信朋友</string>
     <string name="darenapply">申请达人</string>
     <string name="applywait">申请中，请稍等</string>
     <string name="applyfail">申请失败</string>
@@ -296,35 +298,35 @@
     <string name="man">男</string>
     <string name="woman">女</string>
     <string name="geofail">未能获得正确的位置信息，附近功能暂时不可用</string>
-    <string name="dareninfo">如果你是DoSnap活跃用户，热爱用图片表达自己，拥有独特的风格、照片主题鲜明、粉丝数大于200、图片数大于50.只要达到这几点要求，那么你现在就有机会成为DoSnap达人！\n\n成为DoSnap达人后，将会获得更多被推荐展示的机会。收到申请后7天内处理，审核通过后会通过系统私信通知，届时，你的头像位置同时会出现一个黄色星形小标志。\n\n注：一周只可申请一次。</string>
-	<string name="quithint">再按一次退出程序</string>
-	<string name="load_error">加载失败,点击重试</string>
-	<string name="all_follow">一键关注</string>
-	<string name="may_like">可能感兴趣的人</string>
-	<string name="phoneandmail">手机号/邮箱/用户名</string>
-	<string name="phonenum">手机号</string>
-	<string name="regdosnap">注册多色</string>
-	<string name="checknum">验证码 </string>
-	<string name="getchecknum">获取验证码 </string>
-	<string name="complete">完成注册</string>
-	<string name="phonenull">请输入手机号码</string>
-	<string name="phoneerror">请输入有效的手机号码</string>
-	<string name="receivemailcheck">接收验证码的邮箱 </string>
-	<string name="fastlogin">社交帐号快速登录 </string>
-	<string name="add">+</string>
-	<string name="inputphonemail">请输入手机号或者邮箱</string>
-	<string name="attention_success">一键关注成功</string>
-	<string name="notify">通知</string>
-	<string name="try_again">网络不给力，请稍后再试~</string>
-	<string name="checknumnull">验证码不能为空</string>
-	<string name="getchecksuccess">验证码已发送</string>
-	<string name="getcheckfailed">获取验证码失败</string>
-	<string name="share2weixinfriends">分享给微信好友</string>
-	<string name="share2weixinfriendshint">点击多色-添加照片-生成海报-推荐给好友</string>
-	<string name="searchuserlabel">搜索标签、用户</string>
-	<string name="defaultView">#添加标签</string>
-	<string name="weibosdk_demo_toast_auth_success">授权成功</string>
-	<string name="weibosdk_demo_toast_auth_failed">授权失败</string>
+    <string name="dareninfo">如果你是DoSnap活跃用户，热爱用图片表达自己，拥有独特的风格、照片主题鲜明、粉丝数大于200、图片数大于50。只要达到这几点要求，那么你现在就有机会成为DoSnap达人！\n\n成为DoSnap达人后，将会获得更多被推荐展示的机会。收到申请后7天内处理，审核通过后会通过系统私信通知。（注：一周只可申请一次）</string>
+    <string name="quithint">再按一次退出程序</string>
+    <string name="load_error">加载失败,点击重试</string>
+    <string name="all_follow">一键关注</string>
+    <string name="may_like">可能感兴趣的人</string>
+    <string name="phoneandmail">手机号/邮箱/用户名</string>
+    <string name="phonenum">手机号</string>
+    <string name="regdosnap">注册多色</string>
+    <string name="checknum">验证码 </string>
+    <string name="getchecknum">发送验证码 </string>
+    <string name="complete">完成注册</string>
+    <string name="phonenull">请输入手机号码</string>
+    <string name="phoneerror">请输入有效的手机号码</string>
+    <string name="receivemailcheck">接收验证码的邮箱 </string>
+    <string name="fastlogin">快速登录 </string>
+    <string name="add">+</string>
+    <string name="inputphonemail">请输入手机号或者邮箱</string>
+    <string name="attention_success">一键关注成功</string>
+    <string name="notify">通知</string>
+    <string name="try_again">网络不给力，请稍后再试~</string>
+    <string name="checknumnull">验证码不能为空</string>
+    <string name="getchecksuccess">验证码已发送</string>
+    <string name="getcheckfailed">获取验证码失败</string>
+    <string name="share2weixinfriends">分享给微信好友</string>
+    <string name="share2weixinfriendshint">点击多色-添加照片-生成海报-推荐给好友</string>
+    <string name="searchuserlabel">搜索标签、用户</string>
+    <string name="defaultView">#添加标签</string>
+    <string name="weibosdk_demo_toast_auth_success">授权成功</string>
+    <string name="weibosdk_demo_toast_auth_failed">授权失败</string>
     <string name="weibosdk_demo_toast_auth_canceled">取消授权</string>
     <string name="logoutwarning">用户登录状态失效，请重新登录!</string>
     <string name="loading">登录中&#8230;</string>
@@ -344,7 +346,7 @@
     <string name="upload_failed">上传图片失败</string>
 
     <string-array name="fragments">
-        <item>主页</item>
+        <item>关注</item>
         <item>精选</item>
     </string-array>
 
@@ -353,24 +355,106 @@
         <item>On Touch</item>
         <item>On</item>
     </string-array>
-    
+
     <string name="camerasdk_app_name">camerasdk</string>
-	<string name="camerasdk_album_all">相机胶卷</string>
-	<string name="camerasdk_album">选择相册</string>
-	<string name="camerasdk_album_button">相册</string>
-	<string name="camerasdk_cancel">取消</string>
-	<string name="camerasdk_back">返回</string>
-	<string name="camerasdk_delete">删除</string>
-	<string name="camerasdk_preview_image">图片预览</string>
-	<string name="camerasdk_msg_no_camera">没有系统相机</string>
+    <string name="camerasdk_album_all">相机胶卷</string>
+    <string name="camerasdk_album">选择相册</string>
+    <string name="camerasdk_album_button">相册</string>
+    <string name="camerasdk_cancel">取消</string>
+    <string name="camerasdk_back">返回</string>
+    <string name="camerasdk_delete">删除</string>
+    <string name="camerasdk_preview_image">图片预览</string>
+    <string name="camerasdk_msg_no_camera">没有系统相机</string>
     <string name="camerasdk_msg_amount_limit">已经达到最高选择数量</string>
     <string name="camerasdk_images_building">处理图片</string>
-    
+
     <string name="camerasdk_tab_filter">特效</string>
     <string name="camerasdk_tab_sticker">贴纸</string>
     <string name="camerasdk_tab_cropper">裁剪</string>
     <string name="camerasdk_tab_graffiti">涂鸦</string>
     <string name="camerasdk_tab_enhance">编辑</string>
     <string name="camerasdk_tab_continue">继续</string>
+    <string name="event">活动</string>
+    <string name="event_in_progress">正在进行</string>
+    <string name="event_vote">投票</string>
+    <string name="event_end">已经结束</string>
+    <string name="myphoto">我的作品</string>
+    <string name="gallery">图库</string>
+    <string name="found">发现</string>
+    <string name="upload_photo">上传图片</string>
+    <string name="mine">我的</string>
+    <string name="dynamic">动态</string>
+    <string name="upload">上传</string>
+    <string name="headline">标题</string>
+    <string name="name_for_photo">为这张照片起个名字吧</string>
+    <string name="description">描述</string>
+    <string name="tell_story_of_photo">告诉大家图片中的故事</string>
+    <string name="classification">分类</string>
+    <string name="choose_classification">选择分类：</string>
+    <string name="keywords">关键词</string>
+    <string name="upload_notice">dosnap是原创社区，请确认您上传的图片的著作权为本人所有，严禁上传他人作品，如有侵权行为，您将承担相应的法律责任。社区有义务采取警告、举报、封号乃至追究法律责任等一切措施。</string>
+    <string name="blacklist">黑名单</string>
+    <string name="remove_blacklist">移出黑名单</string>
+    <string name="banuser">加入黑名单</string>
+    <string name="banuser_hint">加入黑名单后，对方将不能再对你进行评论、私信、点赞，@也将无效</string>
+    <string name="daren">达人</string>
+    <string name="freshman">新人</string>
+    <string name="weichat">微信</string>
+    <string name="nearby">附近的人</string>
+    <string name="title_bar">标题</string>
+    <string name="manage_account">帐号管理</string>
+    <string name="user_avatar">头像</string>
+    <string name="signature">签名</string>
+    <string name="account_binding">帐号绑定</string>
+    <string name="user_email">邮箱</string>
+    <string name="inputchecknum">请输入验证码</string>
+    <string name="confirm">确认</string>
+    <string name="unbind">未绑定</string>
+    <string name="plswaiting">请稍候</string>
+    <string name="weibo">微博</string>
+    <string name="iscancel_attention">是否取消关注</string>
+    <string name="num_of_laud">  喜欢</string>
+    <string name="category">分类</string>
+    <string name="uncategory">未分类</string>
+    <string name="detail">详情描述：</string>
+    <string name="vote_format">投票时间还剩%s结束</string>
+    <string name="underway_format">活动时间还剩%s结束</string>
+    <string name="ending_format">结束：已结束%s</string>
+    <string name="all">全部</string>
+    <string name="recommand_user">推荐用户</string>
+    <string name="editor_recommand">编辑推荐</string>
+    <string name="followed_u">关注过你</string>
+    <string name="relevant_tag">相关标签：</string>
+    <string name="hot_photo">热门作品</string>
+    <string name="plus_follow">+ 关注</string>
+    <string name="followed">已关注</string>
+    <string name="previous_event">往期活动</string>
+    <string name="hide">隐藏</string>
+    <string name="delhide">取消隐藏</string>
+    <string name="choose_category">请选择分类</string>
+    <string name="set_password">设置密码</string>
+    <string name="account_register">注册帐号</string>
+    <string name="mailnull">请输入邮箱</string>
+    <string name="account_error">帐号不正确，请重新输入</string>
+    <string name="vote_success">投票成功</string>
+    <string name="vote_failed">投票失败</string>
+    <string name="has_vote">已投票</string>
+    <string name="theme">主题</string>
+    <string name="press_code">长按二维码，查看更多照片</string>
+    <string name="homepage">首页</string>
+    <string name="personal">个人</string>
+    <string name="shareto">分享到</string>
+    <string name="toreport">举报</string>
+    <string name="please_bind_account">请先绑定手机或邮箱</string>
+    <string name="account">帐号</string>
+    <string name="share_user_page_title">%1$s在dosnap多色的个人主页， %2$s个人已关注</string>
+    <string name="share_user_page_content">%1$s在dosnap多色已累计发布%2$s张作品， 收获%3$s名粉丝</string>
+    <string name="operate_failed">操作失败</string>
+    <string name="no_more_data">暂无更多数据</string>
+    <string name="apply_conditions">dosnap达人申请条件</string>
+    <string name="recommand_follow">推荐关注</string>
+    <string name="history_tags">常用标签</string>
+    <string name="blacklist_success">添加到黑名单成功</string>
+    <string name="blacklist_failed">你已将对方添加到黑名单，解除需在设置中取消。</string>
 
 </resources>

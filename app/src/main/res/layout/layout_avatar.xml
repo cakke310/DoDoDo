@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/avatarLay"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        fresco:failureImage="@drawable/missing_image"
+        fresco:placeholderImage="@color/message_gray"
+        fresco:placeholderImageScaleType="centerInside"
+        fresco:viewAspectRatio="1.00"
+        fresco:roundAsCircle="true" />
+
+    <ImageView
+        android:id="@+id/daren"
+        android:layout_width="@dimen/DIMEN_16DP"
+        android:layout_height="@dimen/DIMEN_16DP"
+        android:layout_alignBottom="@id/avatar"
+        android:layout_alignRight="@id/avatar"
+        android:src="@drawable/darenicon"
+        android:visibility="invisible" />
+
+</RelativeLayout>
