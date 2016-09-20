@@ -382,16 +382,16 @@ public class MainPhotoBean {
     }
 
     public static class MatchListBean {
-        private String id;
+        private int id;
         private String title;
         private String imgurl;
-        private String eventtype;
+        private int eventtype;
 
-        public String getId() {
+        public int getId() {
             return id;
         }
 
-        public void setId(String id) {
+        public void setId(int id) {
             this.id = id;
         }
 
@@ -411,11 +411,11 @@ public class MainPhotoBean {
             this.imgurl = imgurl;
         }
 
-        public String getEventtype() {
+        public int getEventtype() {
             return eventtype;
         }
 
-        public void setEventtype(String eventtype) {
+        public void setEventtype(int eventtype) {
             this.eventtype = eventtype;
         }
     }

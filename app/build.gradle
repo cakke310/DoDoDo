@@ -30,5 +30,5 @@ dependencies {
     compile project(':pullToRefresh')
     compile 'com.google.code.gson:gson:2.4'
     compile 'com.zhy:base-rvadapter:3.0.3'
-
+    compile project(':horizontalListView')
 }
