@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/message_gray">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/DIMEN_18DP"
+        android:layout_marginRight="@dimen/DIMEN_18DP"
+        android:layout_marginBottom="@dimen/DIMEN_60DP"
+        android:background="@drawable/shadows3">
+
+
+        <com.xitek.dosnap.view.AvatarView
+            android:id="@+id/avatarView"
+            android:layout_width="@dimen/DIMEN_62DP"
+            android:layout_height="@dimen/DIMEN_62DP"
+            android:layout_marginTop="@dimen/DIMEN_22DP"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_6DP"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/avatarView"
+            android:textSize="12sp"
+            android:typeface="monospace"
+            android:textColor="@color/text_gray2"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/DIMEN_6DP"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tv_username"
+            android:textSize="12sp"
+            android:typeface="monospace"
+            android:text="@string/recommand_follow"
+            android:textColor="@color/gray_c5"/>
+
+        <ImageView
+            android:id="@+id/iv_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/DIMEN_14DP"
+            android:layout_alignTop="@+id/avatarView"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/icon_guanzhu"
+            android:gravity="center"/>
+
+        <!--<com.xitek.dosnap.view.AttentionView
+            android:id="@+id/img_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_attention"
+            android:clickable="true"
+            android:layout_marginTop="@dimen/DIMEN_25DP"
+            android:layout_marginRight="@dimen/DIMEN_24DP"
+            android:layout_alignParentRight="true"/>-->
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/photo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_username"
+            android:layout_marginTop="@dimen/DIMEN_30DP"
+            android:layout_marginBottom="@dimen/DIMEN_30DP"
+            android:layout_marginLeft="@dimen/DIMEN_15DP"
+            android:layout_marginRight="@dimen/DIMEN_15DP"
+            fresco:failureImage="@drawable/loadno"
+            fresco:actualImageScaleType="fitCenter"
+            fresco:placeholderImage="@color/message_gray"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

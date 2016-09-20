@@ -142,31 +142,31 @@ public class MainPhotoBean {
     }
 
     public static class UnfollowInfo {
-        private String userid;
-        private String id;
+        private int userid;
+        private int id;
         private String username;
-        private String isdaren;
+        private int isdaren;
         private String content;
         private String address;
         private String imgurl;
-        private String height;
-        private String laud;
-        private String comment;
-        private String addtime;
+        private int height;
+        private int laud;
+        private int comment;
+        private long addtime;
 
-        public String getUserid() {
+        public int getUserid() {
             return userid;
         }
 
-        public void setUserid(String userid) {
+        public void setUserid(int userid) {
             this.userid = userid;
         }
 
-        public String getId() {
+        public int getId() {
             return id;
         }
 
-        public void setId(String id) {
+        public void setId(int id) {
             this.id = id;
         }
 
@@ -178,11 +178,11 @@ public class MainPhotoBean {
             this.username = username;
         }
 
-        public String getIsdaren() {
+        public int getIsdaren() {
             return isdaren;
         }
 
-        public void setIsdaren(String isdaren) {
+        public void setIsdaren(int isdaren) {
             this.isdaren = isdaren;
         }
 
@@ -210,35 +210,35 @@ public class MainPhotoBean {
             this.imgurl = imgurl;
         }
 
-        public String getHeight() {
+        public int getHeight() {
             return height;
         }
 
-        public void setHeight(String height) {
+        public void setHeight(int height) {
             this.height = height;
         }
 
-        public String getLaud() {
+        public int getLaud() {
             return laud;
         }
 
-        public void setLaud(String laud) {
+        public void setLaud(int laud) {
             this.laud = laud;
         }
 
-        public String getComment() {
+        public int getComment() {
             return comment;
         }
 
-        public void setComment(String comment) {
+        public void setComment(int comment) {
             this.comment = comment;
         }
 
-        public String getAddtime() {
+        public long getAddtime() {
             return addtime;
         }
 
-        public void setAddtime(String addtime) {
+        public void setAddtime(long addtime) {
             this.addtime = addtime;
         }
     }
