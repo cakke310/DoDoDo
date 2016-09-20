@@ -258,7 +258,7 @@ public class MainPhotoBean {
         public int haslaud;
         public int isdaren;
         public int isdownload;
-        private List<Comment> comments;
+        public List<Comment> comments;
 
         public int getId() {
             return id;

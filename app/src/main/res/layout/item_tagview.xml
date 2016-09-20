@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:id="@+id/tv_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textview_bg"
+        android:paddingLeft="@dimen/DIMEN_10DP"
+        android:paddingRight="@dimen/DIMEN_10DP"
+        android:paddingTop="@dimen/DIMEN_3DP"
+        android:paddingBottom="@dimen/DIMEN_3DP"
+        android:textSize="12sp"
+        android:layout_marginRight="@dimen/DIMEN_10DP" />
+
+</merge>
