@@ -7,6 +7,7 @@ import com.doruemi.adapter.HomeListAdapter;
 import com.doruemi.bean.MainPhotoBean;
 import com.doruemi.protocol.PhotoProtocol;
 import com.doruemi.util.LogUtil;
+import com.doruemi.view.BannerView;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
@@ -25,6 +26,8 @@ public class HomeFragment extends BaseFragment {
     private PullToRefreshListView listView;
     private List data;
     private HomeListAdapter mAdapter;
+    private BannerView bannerView;
+
 
     @Override
     protected void initListener() {
@@ -73,6 +76,9 @@ public class HomeFragment extends BaseFragment {
         });
         data = new ArrayList();
         mAdapter = new HomeListAdapter(this.getActivity(), data);
+        bannerView = new BannerView(getActivity());
+        listv.addHeaderView(bannerView);
+        listView.setAdapter(mAdapter);
     }
 
     @Override
