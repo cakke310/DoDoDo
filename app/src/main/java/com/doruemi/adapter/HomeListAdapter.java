@@ -16,16 +16,16 @@ import com.doruemi.configs.ConfigConstants;
 import com.doruemi.view.AvatarView;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
-import com.zhy.adapter.recyclerview.base.ItemViewDelegate;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
+import com.zhy.adapter.abslistview.MultiItemTypeAdapter;
+import com.zhy.adapter.abslistview.ViewHolder;
+import com.zhy.adapter.abslistview.base.ItemViewDelegate;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 2016-09-16.
  */
-public class HomeListAdapter extends MultiItemTypeAdapter{
+public class HomeListAdapter extends MultiItemTypeAdapter {
     public HomeListAdapter(Context context, List data) {
         super(context,data);
         addItemViewDelegate(new HomeListDelegate());

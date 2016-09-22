@@ -1,12 +1,13 @@
 apply plugin: 'com.android.library'
-
 android {
-    compileSdkVersion 21
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
 
     defaultConfig {
-        minSdkVersion 4
-        targetSdkVersion 4
+        minSdkVersion 7
+        targetSdkVersion 22
+        versionCode = 2110
+        versionName = "2.1.1"
     }
 
     buildTypes {
@@ -15,4 +16,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+}
+
+dependencies {
+    compile 'com.android.support:recyclerview-v7:22.1.0'
 }

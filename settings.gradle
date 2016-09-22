@@ -1,1 +1,1 @@
-include ':app', ':pullToRefresh', ':horizontalListView'
+include ':app', ':horizontalListView', ':pullToRefresh'

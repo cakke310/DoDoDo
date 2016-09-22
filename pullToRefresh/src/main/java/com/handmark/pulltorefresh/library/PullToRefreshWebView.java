@@ -15,6 +15,7 @@
  *******************************************************************************/
 package com.handmark.pulltorefresh.library;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
@@ -111,7 +112,7 @@ public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
 
 	@Override
 	protected boolean isReadyForPullEnd() {
-		float exactContentHeight = FloatMath.floor(mRefreshableView.getContentHeight() * mRefreshableView.getScale());
+		float exactContentHeight = (float) Math.floor(mRefreshableView.getContentHeight() * mRefreshableView.getScale());
 		return mRefreshableView.getScrollY() >= (exactContentHeight - mRefreshableView.getHeight());
 	}
 
@@ -127,7 +128,7 @@ public class PullToRefreshWebView extends PullToRefreshBase<WebView> {
 		mRefreshableView.saveState(saveState);
 	}
 
-	@SuppressWarnings("deprecation")
+	@TargetApi(9)
 	final class InternalWebViewSDK9 extends WebView {
 
 		// WebView doesn't always scroll back to it's edge so we add some

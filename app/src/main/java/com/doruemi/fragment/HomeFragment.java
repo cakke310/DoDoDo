@@ -1,5 +1,6 @@
 package com.doruemi.fragment;
 
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 
 import com.doruemi.R;
@@ -11,6 +12,7 @@ import com.doruemi.view.BannerView;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.PullToRefreshRecyclerView;
 import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.util.ArrayList;
@@ -25,6 +27,7 @@ public class HomeFragment extends BaseFragment {
 
     private PullToRefreshListView listView;
     private List data;
+    private List bannerlist;
     private HomeListAdapter mAdapter;
     private BannerView bannerView;
 
@@ -36,6 +39,8 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        data = new ArrayList();
+        bannerlist = new ArrayList<>();
         getHttp();
     }
 
@@ -52,6 +57,8 @@ public class HomeFragment extends BaseFragment {
         @Override
         public void onResponse(String response, int id) {
             MainPhotoBean mainPhotoBean = new Gson().fromJson(response, MainPhotoBean.class);
+            data = mainPhotoBean.getList();
+            bannerlist = mainPhotoBean.getMatchlist();
         }
     };
 
@@ -74,11 +81,12 @@ public class HomeFragment extends BaseFragment {
                 PhotoProtocol.getHomeAttention(stringCallback, page);
             }
         });
-        data = new ArrayList();
+
         mAdapter = new HomeListAdapter(this.getActivity(), data);
         bannerView = new BannerView(getActivity());
         listv.addHeaderView(bannerView);
         listView.setAdapter(mAdapter);
+        bannerView.set(bannerlist);
     }
 
     @Override

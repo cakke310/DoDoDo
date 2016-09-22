@@ -29,8 +29,8 @@ import com.doruemi.view.CommentView;
 import com.doruemi.view.LaudView;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.zhy.adapter.recyclerview.base.ItemViewDelegate;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
+import com.zhy.adapter.abslistview.ViewHolder;
+import com.zhy.adapter.abslistview.base.ItemViewDelegate;
 
 import java.util.ArrayList;
 import java.util.HashMap;
