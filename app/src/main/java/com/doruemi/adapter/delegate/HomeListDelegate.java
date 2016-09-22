@@ -21,8 +21,10 @@ import android.widget.Toast;
 import com.doruemi.DosnapApp;
 import com.doruemi.R;
 import com.doruemi.adapter.TagsHlistAdapter;
+import com.doruemi.application.BaseApplication;
 import com.doruemi.bean.MainPhotoBean;
 import com.doruemi.configs.ConfigConstants;
+import com.doruemi.util.LogUtil;
 import com.doruemi.util.Utility;
 import com.doruemi.view.AvatarView;
 import com.doruemi.view.CommentView;
@@ -71,6 +73,7 @@ public class HomeListDelegate implements ItemViewDelegate {
         SimpleDraweeView photoView = holder.getView(R.id.photo);
         ViewGroup.LayoutParams para = photoView.getLayoutParams();
         para.height = DosnapApp.devicewidth * photoInfoBean.height / 640;
+//        para.height = 860;
         photoView.setLayoutParams(para);
         final String imgurl = DosnapApp.apiHost + "width_850/" + photoInfoBean.imgurl.replaceAll("width_\\d+/", "");
         DraweeController controller = ConfigConstants.getDraweeController(
@@ -192,7 +195,7 @@ public class HomeListDelegate implements ItemViewDelegate {
 
         /** 设置点赞动画 */
         final ImageView imgGood = holder.getView(R.id.iv_big_good);
-        final Animation animation = AnimationUtils.loadAnimation(DosnapApp.getApplication(), R.anim.lauded_anim);
+        final Animation animation = AnimationUtils.loadAnimation(BaseApplication.getContext(), R.anim.lauded_anim);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {

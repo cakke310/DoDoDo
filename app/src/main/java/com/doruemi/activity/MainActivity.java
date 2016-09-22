@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
 import android.widget.RadioGroup;
 
+import com.doruemi.DosnapApp;
 import com.doruemi.R;
 import com.doruemi.fragment.BaseFragment;
 import com.doruemi.fragment.BtnFragmentFactory;
@@ -31,6 +33,7 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
 
     private void initData() {
+        setwidth();
         changeFragment(0);
         rbs_fragment.setOnCheckedChangeListener(this);
     }
@@ -79,5 +82,14 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
         }
 
+    }
+
+    private void setwidth() {
+        if (DosnapApp.devicewidth == 100) {
+            DisplayMetrics displaymetrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+            DosnapApp.devicewidth = displaymetrics.widthPixels;
+            DosnapApp.deviceheight = displaymetrics.heightPixels;
+        }
     }
 }

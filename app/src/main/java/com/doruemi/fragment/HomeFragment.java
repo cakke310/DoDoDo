@@ -59,6 +59,9 @@ public class HomeFragment extends BaseFragment {
             MainPhotoBean mainPhotoBean = new Gson().fromJson(response, MainPhotoBean.class);
             data = mainPhotoBean.getList();
             bannerlist = mainPhotoBean.getMatchlist();
+            mAdapter = new HomeListAdapter(getContext(), data);
+            listView.setAdapter(mAdapter);
+            bannerView.set(bannerlist);
         }
     };
 
@@ -82,11 +85,10 @@ public class HomeFragment extends BaseFragment {
             }
         });
 
-        mAdapter = new HomeListAdapter(this.getActivity(), data);
+
         bannerView = new BannerView(getActivity());
         listv.addHeaderView(bannerView);
-        listView.setAdapter(mAdapter);
-        bannerView.set(bannerlist);
+
     }
 
     @Override

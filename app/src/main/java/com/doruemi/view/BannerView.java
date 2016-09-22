@@ -1,6 +1,7 @@
 package com.doruemi.view;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -16,6 +17,7 @@ import com.doruemi.DosnapApp;
 import com.doruemi.R;
 import com.doruemi.bean.MainPhotoBean;
 import com.doruemi.configs.ConfigConstants;
+import com.doruemi.util.LogUtil;
 import com.doruemi.util.UIUtils;
 import com.doruemi.util.Utility;
 import com.facebook.drawee.interfaces.DraweeController;
@@ -35,6 +37,7 @@ public class BannerView extends FrameLayout {
 
     private LinearLayout dotLayout;
     private ViewPager viewPager;
+    private Handler handler;
 
     public BannerView(Context context) {
         this(context,null);
@@ -51,7 +54,8 @@ public class BannerView extends FrameLayout {
         elements = new ArrayList<>();
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         dotLayout = (LinearLayout) findViewById(R.id.dotLayout);
-
+        autoPlayTask = new AutoPlayTask();
+        handler = new Handler();
         initData();
     }
 
@@ -77,20 +81,20 @@ public class BannerView extends FrameLayout {
         public void run() {
             if(has_auto_play){
                 viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
-                UIUtils.postDelayed(this, AUTO_PLAY_TIME);
+                handler.postDelayed(this, AUTO_PLAY_TIME);
             }
         }
 
         public void stop() {
             has_auto_play = false;
-            UIUtils.removeCallbacks(this);
+            handler.removeCallbacks(this);
         }
 
         public void start() {
             if(!has_auto_play){
                 has_auto_play = true;
-                UIUtils.removeCallbacks(this);
-                UIUtils.postDelayed(this, AUTO_PLAY_TIME);
+                //UIUtils.removeCallbacks(this);
+                handler.postDelayed(this, AUTO_PLAY_TIME);
             }
         }
     }
@@ -104,6 +108,7 @@ public class BannerView extends FrameLayout {
         for(int i = 0; i < data.size(); i++){
             String imgurl = DosnapApp.apiHost + data.get(i).getImgurl();
             if(data.size()>1){
+                LogUtil.e("i---"+i);
                 dotLayout.addView(addDotView(mContext,i));
             }
         }
@@ -181,10 +186,15 @@ public class BannerView extends FrameLayout {
             DraweeController controller = ConfigConstants.getDraweeController(
                     ConfigConstants.getImageRequest(photoView, DosnapApp.apiHost + elements.get(i).getImgurl()), photoView);
             photoView.setController(controller);
-
-            MainPhotoBean.MatchListBean item = elements.get(position);
+            container.addView(photoView);
+//            MainPhotoBean.MatchListBean item = elements.get(position);
 
             return photoView;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            container.removeView((View) object);
         }
 
         @Override

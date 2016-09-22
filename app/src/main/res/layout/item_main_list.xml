@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/DIMEN_64DP">
 
-        <com.xitek.dosnap.view.AvatarView
+        <com.doruemi.view.AvatarView
             android:id="@+id/avatarview"
             android:layout_width="@dimen/DIMEN_46DP"
             android:layout_height="@dimen/DIMEN_46DP"
@@ -120,18 +120,18 @@
         android:gravity="right|center_vertical"
         android:orientation="horizontal">
 
-        <com.xitek.dosnap.view.ShareView
-            android:id="@+id/img_share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/DIMEN_5DP"
-            android:paddingRight="@dimen/DIMEN_5DP"
-            android:paddingBottom="@dimen/DIMEN_12DP"
-            android:paddingTop="@dimen/DIMEN_12DP"
-            android:layout_marginRight="@dimen/DIMEN_14DP"
-            android:src="@drawable/icon_home_more"/>
+        <!--<com.xitek.dosnap.view.ShareView-->
+            <!--android:id="@+id/img_share"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:paddingLeft="@dimen/DIMEN_5DP"-->
+            <!--android:paddingRight="@dimen/DIMEN_5DP"-->
+            <!--android:paddingBottom="@dimen/DIMEN_12DP"-->
+            <!--android:paddingTop="@dimen/DIMEN_12DP"-->
+            <!--android:layout_marginRight="@dimen/DIMEN_14DP"-->
+            <!--android:src="@drawable/icon_home_more"/>-->
 
-        <com.xitek.dosnap.view.CommentView
+        <com.doruemi.view.CommentView
             android:id="@+id/commentView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
             android:layout_marginRight="@dimen/DIMEN_14DP"
             android:src="@drawable/icon_message_path"/>
 
-        <com.xitek.dosnap.view.LaudView
+        <com.doruemi.view.LaudView
             android:id="@+id/laudView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
