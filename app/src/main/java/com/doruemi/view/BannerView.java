@@ -56,7 +56,6 @@ public class BannerView extends FrameLayout {
         dotLayout = (LinearLayout) findViewById(R.id.dotLayout);
         autoPlayTask = new AutoPlayTask();
         handler = new Handler();
-        initData();
     }
 
     public void set(List<MainPhotoBean.MatchListBean> data) {
@@ -208,8 +207,6 @@ public class BannerView extends FrameLayout {
         }
     }
 
-    private void initData() {
-    }
 
     private ImageView addDotView(Context context, int i){
         int width = Utility.Dp2Px(context, 7);
