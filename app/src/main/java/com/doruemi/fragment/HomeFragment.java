@@ -1,5 +1,9 @@
 package com.doruemi.fragment;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
 
@@ -26,11 +30,14 @@ import okhttp3.Call;
  */
 public class HomeFragment extends BaseFragment {
 
+
+    //// TODO: 2016-09-28  刚进首页后的头刷新怎么出来  下拉刷新和加载更多的字在哪里设置   问彭哥的项目是怎么切换fragment的
     private PullToRefreshListView listView;
     private List data;
     private List bannerlist;
     private HomeListAdapter mAdapter;
     private BannerView bannerView;
+    private boolean isRefreshing;
 
 
     @Override
@@ -55,7 +62,10 @@ public class HomeFragment extends BaseFragment {
 
         @Override
         public void onResponse(String response, int id) {
+
             MainPhotoBean mainPhotoBean = new Gson().fromJson(response, MainPhotoBean.class);
+
+
             bannerlist = mainPhotoBean.getMatchlist();
             List mData = mainPhotoBean.getList();
             if (page == 1) {
@@ -67,11 +77,13 @@ public class HomeFragment extends BaseFragment {
                     data.add(0, mainPhotoBean.getUnfollowing());
                 }
             } else {
-                data.addAll(mData);
-                data.add(new Random().nextInt(data.size() - 1), mainPhotoBean.getUnfollowing());
+
+               // data.add(new Random().nextInt(mData.size() - 1), mainPhotoBean.getUnfollowing());
             }
+            data.addAll(mData);
             mAdapter.notifyDataSetChanged();
             listView.onRefreshComplete();
+            isRefreshing=false;
         }
     };
 
@@ -85,16 +97,19 @@ public class HomeFragment extends BaseFragment {
         getHttp();
         ListView listv = listView.getRefreshableView();
         listView.setScrollingWhileRefreshingEnabled(true);
-        listView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+        listView.setMode(PullToRefreshBase.Mode.BOTH);
         listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                PullToRefreshBase.Mode mode = listView.getCurrentMode();
-                if(mode == PullToRefreshBase.Mode.PULL_FROM_END){
-                    page++;
-                }else {
-                    page = 1;
+                if(!isRefreshing){
+                    PullToRefreshBase.Mode mode = listView.getCurrentMode();
+                    if(mode == PullToRefreshBase.Mode.PULL_FROM_END){
+                        page++;
+                    }else {
+                        page = 1;
+                    }
                 }
+
                 bannerView.stopPlay();
                 PhotoProtocol.getHomeAttention(stringCallback, page);
             }
@@ -106,6 +121,7 @@ public class HomeFragment extends BaseFragment {
                     if(view.getLastVisiblePosition() == view.getCount()-1){
                         page++;
                         PhotoProtocol.getHomeAttention(stringCallback,page);
+                        isRefreshing = true;
                         LogUtil.e("滑到底部");
                     }
                 }
@@ -116,7 +132,7 @@ public class HomeFragment extends BaseFragment {
 
             }
         });
-        mAdapter = new HomeListAdapter(getContext(), data);
+        mAdapter = new HomeListAdapter(getActivity(), data);
         bannerView = new BannerView(getActivity());
         listv.addHeaderView(bannerView);
         listView.setAdapter(mAdapter);
@@ -126,6 +142,11 @@ public class HomeFragment extends BaseFragment {
     @Override
     public int setContentViewId() {
         return R.layout.fragment_home;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override

@@ -1,7 +1,6 @@
 /*
  * @Title:  LaudView.java
  * @Copyright:  Xitek Co., Ltd. Copyright 2015-2015,  All rights reserved
- * @Description:  TODO<���������ļ�����ʲô��>
  * @author:  JiangHanQiao
  * @data:  2015��3��19�� ����2:02:55
  * @version:  V1.0

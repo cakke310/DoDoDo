@@ -16,12 +16,14 @@ import android.view.ViewGroup;
 public abstract class BaseFragment extends Fragment{
 
     public View currentView;
-    public int page = 1;
+    public int page;
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         currentView = inflater.inflate(setContentViewId(),null,false);
+        page = 1;
         initView();
         initData();
         initListener();
