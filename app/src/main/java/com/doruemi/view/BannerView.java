@@ -105,13 +105,12 @@ public class BannerView extends FrameLayout {
     private void initUI(List<MainPhotoBean.MatchListBean> data) {
         dotLayout.removeAllViews();
         for(int i = 0; i < data.size(); i++){
-            String imgurl = DosnapApp.apiHost + data.get(i).getImgurl();
             if(data.size()>1){
-                LogUtil.e("i---"+i);
                 dotLayout.addView(addDotView(mContext,i));
             }
         }
         viewPager.setAdapter(new MyPagerAdapter());
+        viewPager.setCurrentItem(1000);
         if(elements.size()>1){
             viewPager.setOnPageChangeListener(new MyPageChangeListener());
         }
@@ -153,24 +152,13 @@ public class BannerView extends FrameLayout {
 
         @Override
         public void onPageScrollStateChanged(int state) {
-            switch (state){
-                case 1:
+            switch (state) {
+                case 1:// 手势滑动，空闲中
                     isAutoPlay = false;
                     autoPlayTask.stop();
                     break;
-                case 2:
+                case 2:// 界面切换中
                     isAutoPlay = true;
-                    break;
-                case 0:// 滑动结束，即切换完毕或者加载完毕
-                    // 当前为最后一张，此时从右向左滑，则切换到第一张
-                    if (viewPager.getCurrentItem() == viewPager.getAdapter()
-                            .getCount() - 1 && !isAutoPlay) {
-                        viewPager.setCurrentItem(0);
-                    }
-                    // 当前为第一张，此时从左向右滑，则切换到最后一张
-                    else if (viewPager.getCurrentItem() == 0 && !isAutoPlay) {
-                        viewPager.setCurrentItem(viewPager.getAdapter().getCount() - 1);
-                    }
                     break;
             }
 
@@ -214,6 +202,7 @@ public class BannerView extends FrameLayout {
         ImageView dotVoew = new ImageView(context);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(width, width);
         lp.setMargins(padding,padding,padding,padding);
+        dotVoew.setLayoutParams(lp);
         if(i == 0){
             dotVoew.setImageResource(R.drawable.dot_blue);
 //            dotVoew.setImageDrawable(getResources().getDrawable(R.drawable.dot_blue));
