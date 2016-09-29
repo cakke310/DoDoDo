@@ -17,7 +17,6 @@ import butterknife.OnClick;
  * Created by Administrator on 2016-09-28.
  */
 public class LoginActivity extends BaseActivity{
-    //// TODO: 2016-09-28 为啥要用 ImageButton    状态栏沉浸式  用butterknife卡
     @Bind(R.id.imgBtn_Loginshow)
     ImageButton imgBtn_Loginshow;
     @Bind(R.id.imgBtn_Loginclean)
@@ -70,7 +69,6 @@ public class LoginActivity extends BaseActivity{
         }
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            //// TODO: 2016-09-28 参数不对
             if(charSequence.length()>0){
                 imgBtn_Loginclean.setVisibility(View.VISIBLE);
                 imgBtn_Loginshow.setVisibility(View.VISIBLE);

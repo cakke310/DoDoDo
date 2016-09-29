@@ -13,6 +13,7 @@ import com.doruemi.adapter.HomeListAdapter;
 import com.doruemi.bean.MainPhotoBean;
 import com.doruemi.protocol.PhotoProtocol;
 import com.doruemi.util.LogUtil;
+import com.doruemi.util.SharedPreferencesUtils;
 import com.doruemi.view.BannerView;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -31,13 +32,13 @@ import okhttp3.Call;
 public class HomeFragment extends BaseFragment {
 
 
-    //// TODO: 2016-09-28  刚进首页后的头刷新怎么出来  下拉刷新和加载更多的字在哪里设置   问彭哥的项目是怎么切换fragment的
     private PullToRefreshListView listView;
     private List data;
     private List bannerlist;
     private HomeListAdapter mAdapter;
     private BannerView bannerView;
     private boolean isRefreshing;
+    private boolean isFirst = true;
 
 
     @Override
@@ -64,29 +65,31 @@ public class HomeFragment extends BaseFragment {
         public void onResponse(String response, int id) {
 
             MainPhotoBean mainPhotoBean = new Gson().fromJson(response, MainPhotoBean.class);
-
-
-            bannerlist = mainPhotoBean.getMatchlist();
-            List mData = mainPhotoBean.getList();
-            if (page == 1) {
-                data.clear();
-                bannerView.set(bannerlist);
-                if (DosnapApp.isuploadPhoto) {
-                    data.add(1, mainPhotoBean.getUnfollowing());
-                } else {
-                    data.add(0, mainPhotoBean.getUnfollowing());
-                }
-            } else {
-
-               // data.add(new Random().nextInt(mData.size() - 1), mainPhotoBean.getUnfollowing());
-            }
-            data.addAll(mData);
-            mAdapter.notifyDataSetChanged();
-            listView.onRefreshComplete();
-            isRefreshing=false;
+            SharedPreferencesUtils.saveMainPhotoBean(mainPhotoBean);
+            handleData(mainPhotoBean);
         }
     };
 
+    private void handleData(MainPhotoBean mainPhotoBean) {
+        bannerlist = mainPhotoBean.getMatchlist();
+        List mData = mainPhotoBean.getList();
+        if (page == 1) {
+            data.clear();
+            bannerView.set(bannerlist);
+            if (DosnapApp.isuploadPhoto) {
+                mData.add(1, mainPhotoBean.getUnfollowing());
+            } else {
+                mData.add(0, mainPhotoBean.getUnfollowing());
+            }
+        } else {
+            mData.add(new Random().nextInt(mData.size() - 1), mainPhotoBean.getUnfollowing());
+        }
+        data.addAll(mData);
+        mAdapter.notifyDataSetChanged();
+        listView.onRefreshComplete();
+        isRefreshing=false;
+        isFirst = false;
+    }
 
 
     @Override
@@ -94,7 +97,13 @@ public class HomeFragment extends BaseFragment {
         listView = (PullToRefreshListView) currentView.findViewById(R.id.list);
         data = new ArrayList();
         bannerlist = new ArrayList<>();
-        getHttp();
+        MainPhotoBean mainPhotoBean =  SharedPreferencesUtils.getMainPhotoBean();
+        if(null == mainPhotoBean){
+            PhotoProtocol.getHomeAttention(stringCallback,page);
+        }else {
+            handleData(mainPhotoBean);
+        }
+
         ListView listv = listView.getRefreshableView();
         listView.setScrollingWhileRefreshingEnabled(true);
         listView.setMode(PullToRefreshBase.Mode.BOTH);
@@ -109,7 +118,6 @@ public class HomeFragment extends BaseFragment {
                         page = 1;
                     }
                 }
-
                 bannerView.stopPlay();
                 PhotoProtocol.getHomeAttention(stringCallback, page);
             }
@@ -136,8 +144,12 @@ public class HomeFragment extends BaseFragment {
         bannerView = new BannerView(getActivity());
         listv.addHeaderView(bannerView);
         listView.setAdapter(mAdapter);
-
+        if(isFirst){
+            listView.setRefreshing();
+        }
     }
+
+
 
     @Override
     public int setContentViewId() {

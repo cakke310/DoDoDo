@@ -19,7 +19,6 @@ import com.doruemi.fragment.BtnFragmentFactory;
 import java.util.ArrayList;
 
 public class MainActivity extends FragmentActivity implements RadioGroup.OnCheckedChangeListener{
-    //// TODO: 2016-09-28 为啥要继承 FragmentActivity
 
     private ArrayList<BaseFragment> fragments;
     private RadioGroup rbs_fragment;
@@ -36,7 +35,6 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
     private void initData() {
         if (!(DosnapApp.userid > 0 && DosnapApp.timeout > System.currentTimeMillis() / 1000)) {
-            //// TODO: 2016-09-28   DosnapApp.timeout > System.currentTimeMillis() / 1000)为啥这样判断
             Intent intent_login = new Intent(MainActivity.this, LoginActivity.class);
             startActivityForResult(intent_login, DosnapApp.ACTIVITY_LOGIN);
         }
