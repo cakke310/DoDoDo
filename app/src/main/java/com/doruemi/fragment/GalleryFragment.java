@@ -27,7 +27,7 @@ import okhttp3.Response;
 /**
  * Created by Administrator on 2016-08-20.
  */
-public class SearchFragment extends BaseFragment {
+public class GalleryFragment extends BaseFragment {
 
     private PullToRefreshListView list;
     private int page = 1;

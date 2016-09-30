@@ -5,7 +5,7 @@ import com.doruemi.R;
 /**
  * Created by Administrator on 2016-08-20.
  */
-public class MessageFragment extends BaseFragment {
+public class EventFragment extends BaseFragment {
     @Override
     protected void initListener() {
 

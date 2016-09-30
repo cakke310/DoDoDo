@@ -23,6 +23,6 @@ public class SpecialFragment extends BaseFragment {
 
     @Override
     public int setContentViewId() {
-        return R.layout.fragment_special;
+        return R.layout.pager_base;
     }
 }

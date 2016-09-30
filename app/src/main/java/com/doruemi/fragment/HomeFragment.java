@@ -48,7 +48,11 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-
+        if(isFirst){
+            listView.setRefreshing();
+            return;
+        }
+        PhotoProtocol.getHomeAttention(stringCallback,page);
     }
 
     private void getHttp() {
@@ -97,12 +101,6 @@ public class HomeFragment extends BaseFragment {
         listView = (PullToRefreshListView) currentView.findViewById(R.id.list);
         data = new ArrayList();
         bannerlist = new ArrayList<>();
-        MainPhotoBean mainPhotoBean =  SharedPreferencesUtils.getMainPhotoBean();
-        if(null == mainPhotoBean){
-            PhotoProtocol.getHomeAttention(stringCallback,page);
-        }else {
-            handleData(mainPhotoBean);
-        }
 
         ListView listv = listView.getRefreshableView();
         listView.setScrollingWhileRefreshingEnabled(true);
