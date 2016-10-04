@@ -1,0 +1,298 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/photoback"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@android:color/black">
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="@style/ProgressBarBig"
+        android:layout_width="@dimen/DIMEN_25DP"
+        android:layout_height="@dimen/DIMEN_25DP"
+        android:layout_centerInParent="true" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        fresco:failureImage="@drawable/loadno" />
+
+    <LinearLayout
+        android:id="@+id/layout_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="#aa000000"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/DIMEN_20DP"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:id="@+id/layout_make"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_80DP"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/exif_make"
+                android:textColor="#cccccc" />
+
+            <TextView
+                android:id="@+id/make"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_80DP"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/exif_model"
+                android:textColor="#cccccc" />
+
+            <TextView
+                android:id="@+id/model"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_software"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_80DP"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/exif_software"
+                android:textColor="#cccccc" />
+
+            <TextView
+                android:id="@+id/software"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_exposuretime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_80DP"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/exif_exposuretime"
+                android:textColor="#cccccc" />
+
+            <TextView
+                android:id="@+id/exposuretime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_focallength"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_80DP"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/exif_focallength"
+                android:textColor="#cccccc" />
+
+            <TextView
+                android:id="@+id/focallength"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_aperture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_80DP"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/exif_aperture"
+                android:textColor="#cccccc" />
+
+            <TextView
+                android:id="@+id/aperture"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_shutterspeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_80DP"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/exif_shutterspeed"
+                android:textColor="#cccccc" />
+
+            <TextView
+                android:id="@+id/shutterspeed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_flash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_80DP"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/exif_flash"
+                android:textColor="#cccccc" />
+
+            <TextView
+                android:id="@+id/flash"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_exposurebiasvalue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_80DP"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/exif_exposurebiasvalue"
+                android:textColor="#cccccc" />
+
+            <TextView
+                android:id="@+id/exposurebiasvalue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_isospeedratings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_80DP"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/exif_isospeedratings"
+                android:textColor="#cccccc" />
+
+            <TextView
+                android:id="@+id/isospeedratings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_lensmodel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <TextView
+                android:layout_width="@dimen/DIMEN_80DP"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:padding="5dp"
+                android:text="@string/exif_lensmodel"
+                android:textColor="#cccccc" />
+
+            <TextView
+                android:id="@+id/lensmodel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:padding="5dp"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/picinfo"
+        android:layout_width="@dimen/DIMEN_42DP"
+        android:layout_height="@dimen/DIMEN_42DP"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:padding="10dp"
+        android:src="@drawable/picinfo"
+        android:visibility="gone" />
+
+</RelativeLayout>

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import com.doruemi.DosnapApp;
 import com.doruemi.R;
+import com.doruemi.activity.PhotoShowActivity;
 import com.doruemi.adapter.delegate.HomeListDelegate;
 import com.doruemi.bean.MainPhotoBean;
 import com.doruemi.configs.ConfigConstants;
@@ -26,7 +27,7 @@ import java.util.List;
  * Created by Administrator on 2016-09-16.
  */
 public class HomeListAdapter extends MultiItemTypeAdapter {
-    public HomeListAdapter(Context context, List data) {
+    public HomeListAdapter(final Context context, List data) {
         super(context,data);
         addItemViewDelegate(new HomeListDelegate());
         addItemViewDelegate(new ItemViewDelegate() {
@@ -42,7 +43,7 @@ public class HomeListAdapter extends MultiItemTypeAdapter {
 
             @Override
             public void convert(ViewHolder holder, Object o, int position) {
-                MainPhotoBean.UnfollowInfo data = (MainPhotoBean.UnfollowInfo) o;
+                final MainPhotoBean.UnfollowInfo data = (MainPhotoBean.UnfollowInfo) o;
                 holder.setText(R.id.tv_username, data.getUsername());
 
                 AvatarView avatarView = holder.getView(R.id.avatarView);
@@ -59,13 +60,14 @@ public class HomeListAdapter extends MultiItemTypeAdapter {
                 photoView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        DosnapApp.inphotoshow = true;
-//                        Intent intent = new Intent(context, PhotoShowActivity.class);
-//                        Bundle b = new Bundle();
-//                        b.putString("imgurl", imgurl);
-//                        b.putInt("id", data.id);
-//                        b.putInt("height", data.height);
-//                        intent.putExtras(b);
+                        DosnapApp.inphotoshow = true;
+                        Intent intent = new Intent(context, PhotoShowActivity.class);
+                        Bundle b = new Bundle();
+                        b.putString("imgurl", imgurl);
+                        b.putInt("id", data.getId());
+                        b.putInt("height", data.getHeight());
+                        intent.putExtras(b);
+                        context.startActivity(intent);
 //                        ((Activity) context).startActivityForResult(intent, DosnapApp.ACTIVITY_PHOTOSHOW);
                     }
                 });

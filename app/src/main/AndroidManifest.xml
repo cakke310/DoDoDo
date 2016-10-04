@@ -42,6 +42,7 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.PhotoShowActivity"/>
 
     </application>
 
