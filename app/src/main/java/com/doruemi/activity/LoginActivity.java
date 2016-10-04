@@ -26,8 +26,9 @@ public class LoginActivity extends BaseActivity{
     @Bind(R.id.username)
     EditText username;
     @OnClick(R.id.tv_login)
+
+    //test  jf
     public void login(){
-        Toast.makeText(LoginActivity.this,"111",Toast.LENGTH_SHORT).show();
     }
 
 
