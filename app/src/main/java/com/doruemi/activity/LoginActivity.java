@@ -8,7 +8,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.doruemi.DosnapApp;
 import com.doruemi.R;
+import com.doruemi.util.LogUtil;
+import com.tencent.mm.sdk.modelmsg.SendAuth;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -27,8 +30,16 @@ public class LoginActivity extends BaseActivity{
     EditText username;
     @OnClick(R.id.tv_login)
 
-    //test  jf
-    public void login(){
+    public void loginwechatClick(View v){
+        if(!DosnapApp.mWeixinAPI.isWXAppInstalled()){
+            Toast.makeText(this,"微信未安装",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        LogUtil.e("wechat");
+        SendAuth.Req req = new SendAuth.Req();
+        req.scope = "snsapi_userinfo"; //// TODO: 2016-10-06 这个是注册后的域吗  微信拉不起来  是不是要签名一致？
+        req.state = "dosnap_wechat_login";
+        DosnapApp.mWeixinAPI.sendReq(req);
     }
 
 

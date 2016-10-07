@@ -39,10 +39,10 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
 
     private void initData() {
-//        if (!(DosnapApp.userid > 0 && DosnapApp.timeout > System.currentTimeMillis() / 1000)) {
-//            Intent intent_login = new Intent(MainActivity.this, LoginActivity.class);
-//            startActivityForResult(intent_login, DosnapApp.ACTIVITY_LOGIN);
-//        }
+        if (!(DosnapApp.userid > 0 && DosnapApp.timeout > System.currentTimeMillis() / 1000)) {
+            Intent intent_login = new Intent(MainActivity.this, LoginActivity.class);
+            startActivityForResult(intent_login, DosnapApp.ACTIVITY_LOGIN);
+        }
         setwidth();
         changeFragment(0);
         rbs_fragment.setOnCheckedChangeListener(this);

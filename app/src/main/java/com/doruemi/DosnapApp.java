@@ -15,10 +15,16 @@ import android.preference.PreferenceManager;
 import com.doruemi.R;
 import com.doruemi.configs.ConfigConstants;
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.tencent.mm.sdk.openapi.IWXAPI;
+import com.tencent.mm.sdk.openapi.WXAPIFactory;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.OkHttpClient;
 
 public class DosnapApp extends Application {
 
@@ -113,7 +119,7 @@ public class DosnapApp extends Application {
 
 //    public static AQuery aq;
 
-//    public static IWXAPI mWeixinAPI;
+    public static IWXAPI mWeixinAPI;
     public static String WEIXIN_APP_ID = "wxeb794f94487c13df";
 
 //    public static Oauth2AccessToken mAccessToken;
@@ -172,16 +178,15 @@ public class DosnapApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//		LeakCanary.install(this);
-        //在这里为应用设置异常处理程序，然后我们的程序才能捕获未处理的异常
-//        CrashHandler crashHandler = CrashHandler.getInstance();
-//        crashHandler.init(this);
-//        if (DosnapApp.mWeixinAPI == null) {
-//            DosnapApp.mWeixinAPI = WXAPIFactory.createWXAPI(this.getApplicationContext(), DosnapApp.WEIXIN_APP_ID, false);
-//        }
-//        DosnapApp.mWeixinAPI.registerApp(DosnapApp.WEIXIN_APP_ID);
+        if (DosnapApp.mWeixinAPI == null) {
+            DosnapApp.mWeixinAPI = WXAPIFactory.createWXAPI(this.getApplicationContext(), DosnapApp.WEIXIN_APP_ID, false);
+        }
+        DosnapApp.mWeixinAPI.registerApp(DosnapApp.WEIXIN_APP_ID);
         isFirstLaunch();
         Fresco.initialize(this, ConfigConstants.getImagePipelineConfig(this));
+
+        OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(10000L, TimeUnit.MILLISECONDS).readTimeout(10000L, TimeUnit.MILLISECONDS).build();
+        OkHttpUtils.initClient(okHttpClient);
 //		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
 //				.threadPriority(Thread.NORM_PRIORITY - 2).denyCacheImageMultipleSizesInMemory()
 //				.diskCacheFileNameGenerator(new Md5FileNameGenerator()).diskCacheSize(100 * 1024 * 1024)

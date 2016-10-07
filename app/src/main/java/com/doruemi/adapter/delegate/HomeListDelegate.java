@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.doruemi.DosnapApp;
 import com.doruemi.R;
 import com.doruemi.adapter.TagsHlistAdapter;
-import com.doruemi.application.BaseApplication;
 import com.doruemi.bean.MainPhotoBean;
 import com.doruemi.configs.ConfigConstants;
 import com.doruemi.util.LogUtil;
@@ -195,7 +194,7 @@ public class HomeListDelegate implements ItemViewDelegate {
 
         /** 设置点赞动画 */
         final ImageView imgGood = holder.getView(R.id.iv_big_good);
-        final Animation animation = AnimationUtils.loadAnimation(BaseApplication.getContext(), R.anim.lauded_anim);
+        final Animation animation = AnimationUtils.loadAnimation(DosnapApp.getApplication(), R.anim.lauded_anim);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {

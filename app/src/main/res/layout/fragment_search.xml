@@ -1,62 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical" >
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/searchBtn"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/dosnapgray"
-        android:paddingBottom="8dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="8dp" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_42DP">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_edittext20"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/DIMEN_42DP"
             android:gravity="center"
-            android:padding="4dp" >
+            android:text="@string/found"
+            android:textColor="@color/text_gray2"
+            android:textSize="16sp"/>
 
-            <ImageView
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:contentDescription="@string/imgtip"
-                android:src="@drawable/searchicon" />
+        <View
+            android:layout_width="@dimen/DIMEN_50DP"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:background="@color/white"/>
+    </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/searchuserlabel"
-                android:textColor="@android:color/darker_gray" />
-        </LinearLayout>
-    </FrameLayout>
-
-    <com.handmark.pulltorefresh.library.PullToRefreshListView
-        xmlns:ptr="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/list"
+    <com.handmark.pulltorefresh.library.PullToRefreshRecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingRight="-4dp"
         android:cacheColorHint="#000000"
-        android:divider="@null"
         android:fadingEdge="none"
         android:fastScrollEnabled="false"
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false"
         android:scrollbars="none"
+        android:divider="@null"
         ptr:ptrDrawable="@drawable/ami"
         ptr:ptrHeaderBackground="@null"
         ptr:ptrHeaderTextAppearance="?android:attr/textAppearanceSmall"
-        ptr:ptrScrollingWhileRefreshingEnabled="false" >
-    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+        ptr:ptrScrollingWhileRefreshingEnabled="true"/>
 
 </LinearLayout>

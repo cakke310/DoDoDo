@@ -5,34 +5,56 @@
     android:orientation="vertical" >
 
     <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="48dp"
-        android:background="@android:color/white"
-        android:orientation="horizontal" >
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_42DP"
+        android:gravity="center_vertical"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/DIMEN_12DP"
+            android:layout_marginRight="@dimen/DIMEN_12DP"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:onClick="sharehomepage"
+            android:src="@drawable/user_icon_more" />
 
         <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center"
+            android:layout_centerInParent="true"
             android:text="@string/myhome"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/black" />
+            android:textSize="16sp"
+            android:textColor="@color/text_gray" />
+
+        <ImageView
+            android:id="@+id/addFriend"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/DIMEN_12DP"
+            android:layout_marginLeft="@dimen/DIMEN_20DP"
+            android:src="@drawable/user_icon_add" />
 
         <ImageView
             android:id="@+id/setting"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/DIMEN_12DP"
             android:contentDescription="@string/btninfo_set"
-            android:padding="12dp"
-            android:src="@drawable/setting" />
+            android:layout_toLeftOf="@+id/more"
+            android:src="@drawable/user_icon_system" />
     </RelativeLayout>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1px"
-        android:background="@android:color/darker_gray" />
+        android:background="@color/dosnapgray" />
 
     <!--<com.xitek.dosnap.view.UserListView-->
         <!--xmlns:ptr="http://schemas.android.com/apk/res-auto"-->
