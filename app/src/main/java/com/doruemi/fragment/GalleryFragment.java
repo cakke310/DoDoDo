@@ -1,33 +1,29 @@
 package com.doruemi.fragment;
 
-import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 
+import com.doruemi.DosnapApp;
 import com.doruemi.R;
 import com.doruemi.adapter.DividerItemDecoration;
-import com.doruemi.bean.SearchBean;
+import com.doruemi.bean.MainPhotoBean;
 import com.doruemi.configs.ConfigConstants;
+import com.doruemi.protocol.PhotoProtocol;
 import com.doruemi.util.LogUtil;
-import com.doruemi.util.NetworkUtils;
-import com.doruemi.util.UIUtils;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshRecyclerView;
-import com.zhy.adapter.abslistview.CommonAdapter;
-import com.zhy.http.okhttp.OkHttpUtils;
-import com.zhy.http.okhttp.callback.Callback;
+import com.zhy.adapter.recyclerview.CommonAdapter;
+import com.zhy.adapter.recyclerview.base.ViewHolder;
+import com.zhy.adapter.recyclerview.wrapper.HeaderAndFooterWrapper;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
-import okhttp3.Response;
 
 /**
  * Created by Administrator on 2016-08-20.
@@ -36,6 +32,11 @@ public class GalleryFragment extends BaseFragment {
 
 
     private PullToRefreshRecyclerView mPtrRecycleView;
+    private int page = 1;
+    List<MainPhotoBean.PhotoInfoBean> list = new ArrayList<>();
+    private CommonAdapter commonAdapter;
+    private boolean isFirst;
+    private boolean canLoad;
 
     @Override
     protected void initListener() {
@@ -44,6 +45,92 @@ public class GalleryFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        if(isFirst){
+            mPtrRecycleView.setRefreshing();
+            return;
+        }
+        getHttpUtils();
+    }
+
+    private void getHttpUtils() {
+        PhotoProtocol.getSearchPhotoList(waterFallCallback, page);
+    }
+
+    private StringCallback waterFallCallback = new StringCallback() {
+        @Override
+        public void onError(Call call, Exception e, int id) {
+            mPtrRecycleView.onRefreshComplete();
+        }
+
+        @Override
+        public void onResponse(String response, int id) {
+            processData(response);
+            isFirst = false;
+            mPtrRecycleView.onRefreshComplete();
+        }
+    };
+
+    private void processData(String response) {
+        MainPhotoBean mainPhotoBean = new Gson().fromJson(response, MainPhotoBean.class);
+        handleData(mainPhotoBean);
+    }
+
+    private void handleData(MainPhotoBean mainPhotoBean) {
+        List<MainPhotoBean.PhotoInfoBean> data = mainPhotoBean.getList() != null ? mainPhotoBean.getList() : null;
+        if(data.size()>=15){
+            canLoad = true;
+        }
+        if(page == 1){
+            list.clear();
+        }
+
+        if(data != null){
+            list.addAll(data);
+        }
+        commonAdapter = new CommonAdapter<MainPhotoBean.PhotoInfoBean>(getActivity(), R.layout.item_activity_photo, list) {
+            @Override
+            protected void convert(ViewHolder holder, MainPhotoBean.PhotoInfoBean photoInfoBean, int position) {
+                SimpleDraweeView photoView = holder.getView(R.id.photo);
+                String s = photoInfoBean.imgurl;
+                String imgurl = DosnapApp.apiHost +"crop_250x250/"+ photoInfoBean.imgurl
+                        .replaceAll("crop_\\d+x\\d+/", "");
+                DraweeController controller = ConfigConstants.getDraweeController(ConfigConstants.getImageRequest(photoView, imgurl), photoView);
+                photoView.setController(controller);
+            }
+        };
+//        new HeaderAndFooterWrapper(commonAdapter);
+        RecyclerView recyclerView = mPtrRecycleView.getRefreshableView();
+        final GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
+        recyclerView.setLayoutManager(gridLayoutManager);
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), GridLayoutManager.HORIZONTAL));
+
+        recyclerView.setAdapter(commonAdapter);
+        mPtrRecycleView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+        mPtrRecycleView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<RecyclerView>() {
+            @Override
+            public void onRefresh(PullToRefreshBase<RecyclerView> refreshView) {
+                PullToRefreshBase.Mode mode = mPtrRecycleView.getCurrentMode();
+                if(mode == PullToRefreshBase.Mode.PULL_FROM_END){
+                    page++;
+                }else {
+                    page = 1;
+                }
+                getHttpUtils();
+            }
+        });
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if(newState == RecyclerView.SCROLL_STATE_IDLE){
+                    int lastVisibleItemPosition = gridLayoutManager.findLastVisibleItemPosition();
+                    if(lastVisibleItemPosition >= gridLayoutManager.getItemCount()/5 && canLoad){
+                        page++;
+                        getHttpUtils();
+                    }
+                }
+            }
+        });
+        commonAdapter.notifyDataSetChanged();
 
     }
 
@@ -51,10 +138,7 @@ public class GalleryFragment extends BaseFragment {
     @Override
     protected void initView() {
         mPtrRecycleView = (PullToRefreshRecyclerView) currentView.findViewById(R.id.recycler_view);
-        RecyclerView recyclerView = mPtrRecycleView.getRefreshableView();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(),GridLayoutManager.HORIZONTAL));
+
 
 
     }

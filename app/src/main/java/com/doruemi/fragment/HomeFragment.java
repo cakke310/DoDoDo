@@ -67,9 +67,7 @@ public class HomeFragment extends BaseFragment {
 
         @Override
         public void onResponse(String response, int id) {
-
             MainPhotoBean mainPhotoBean = new Gson().fromJson(response, MainPhotoBean.class);
-            SharedPreferencesUtils.saveMainPhotoBean(mainPhotoBean);
             handleData(mainPhotoBean);
         }
     };
