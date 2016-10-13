@@ -37,6 +37,7 @@ public class GalleryFragment extends BaseFragment {
     private CommonAdapter commonAdapter;
     private boolean isFirst;
     private boolean canLoad;
+    private RecyclerView recyclerView;
 
     @Override
     protected void initListener() {
@@ -50,6 +51,7 @@ public class GalleryFragment extends BaseFragment {
             return;
         }
         getHttpUtils();
+        recyclerView.setAdapter(commonAdapter);
     }
 
     private void getHttpUtils() {
@@ -86,33 +88,21 @@ public class GalleryFragment extends BaseFragment {
 
         if(data != null){
             list.addAll(data);
+            commonAdapter.notifyDataSetChanged();
         }
-        commonAdapter = new CommonAdapter<MainPhotoBean.PhotoInfoBean>(getActivity(), R.layout.item_activity_photo, list) {
-            @Override
-            protected void convert(ViewHolder holder, MainPhotoBean.PhotoInfoBean photoInfoBean, int position) {
-                SimpleDraweeView photoView = holder.getView(R.id.photo);
-                String s = photoInfoBean.imgurl;
-                String imgurl = DosnapApp.apiHost +"crop_250x250/"+ photoInfoBean.imgurl
-                        .replaceAll("crop_\\d+x\\d+/", "");
-                DraweeController controller = ConfigConstants.getDraweeController(ConfigConstants.getImageRequest(photoView, imgurl), photoView);
-                photoView.setController(controller);
-            }
-        };
 //        new HeaderAndFooterWrapper(commonAdapter);
-        RecyclerView recyclerView = mPtrRecycleView.getRefreshableView();
+        recyclerView = mPtrRecycleView.getRefreshableView();
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), GridLayoutManager.HORIZONTAL));
 
-        recyclerView.setAdapter(commonAdapter);
+
         mPtrRecycleView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         mPtrRecycleView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<RecyclerView>() {
             @Override
             public void onRefresh(PullToRefreshBase<RecyclerView> refreshView) {
                 PullToRefreshBase.Mode mode = mPtrRecycleView.getCurrentMode();
-                if(mode == PullToRefreshBase.Mode.PULL_FROM_END){
-                    page++;
-                }else {
+                if(mode == PullToRefreshBase.Mode.PULL_FROM_START){
                     page = 1;
                 }
                 getHttpUtils();
@@ -123,7 +113,7 @@ public class GalleryFragment extends BaseFragment {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 if(newState == RecyclerView.SCROLL_STATE_IDLE){
                     int lastVisibleItemPosition = gridLayoutManager.findLastVisibleItemPosition();
-                    if(lastVisibleItemPosition >= gridLayoutManager.getItemCount()/5 && canLoad){
+                    if(lastVisibleItemPosition >= gridLayoutManager.getItemCount()-5 && canLoad){
                         page++;
                         getHttpUtils();
                     }
@@ -138,7 +128,6 @@ public class GalleryFragment extends BaseFragment {
     @Override
     protected void initView() {
         mPtrRecycleView = (PullToRefreshRecyclerView) currentView.findViewById(R.id.recycler_view);
-
 
 
     }
