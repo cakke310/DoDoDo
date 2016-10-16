@@ -7,7 +7,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.doruemi.DosnapApp;
 import com.doruemi.R;
@@ -136,6 +138,33 @@ public class MainActivity extends FragmentActivity implements RadioGroup.OnCheck
 
         }
 
+    }
+
+    /** 退出提示 */
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
+            if (event.getAction() == KeyEvent.ACTION_DOWN
+                    && event.getRepeatCount() == 0) {
+                this.exitApp();
+            }
+            return true;
+        }
+        return super.dispatchKeyEvent(event);
+    }
+    private long exitTime = 0;
+
+
+    /** 退出程序 */
+    private void exitApp() {
+        // 判断2次点击事件时间
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            Toast.makeText(MainActivity.this, getResources().getString(R.string.quithint), Toast.LENGTH_SHORT)
+                    .show();
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+        }
     }
 
     private void setwidth() {

@@ -42,4 +42,33 @@ public class PhotoProtocol {
                 .build()
                 .execute(callback);
     }
+
+    /**
+     * 获取发现页主题列表
+     * @param callback  callback
+     */
+    public static void getCategoryList(Callback callback) {
+        String tlisturl = DosnapApp.apiHost + DosnapApp.apiDir + "theme/covers";
+        OkHttpUtils.get().url(tlisturl)
+                .addParams("identifier", DosnapApp.identifier)
+                .addParams("token", DosnapApp.token)
+                .addParams("pagesize", "30")
+                .build()
+                .execute(callback);
+    }
+
+    /**
+     * 获取发现页推荐用户
+     * @param callback  callback
+     * @param page      页数
+     */
+    public static void getRecommandUsers(Callback callback, int page) {
+        String tlisturl = DosnapApp.apiHost + DosnapApp.apiDir + "discover/getusersList";
+        OkHttpUtils.post().url(tlisturl)
+                .addParams("identifier", DosnapApp.identifier)
+                .addParams("token", DosnapApp.token)
+                .addParams("page", page + "")
+                .build()
+                .execute(callback);
+    }
 }

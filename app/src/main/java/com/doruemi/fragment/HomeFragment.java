@@ -39,6 +39,7 @@ public class HomeFragment extends BaseFragment {
     private BannerView bannerView;
     private boolean isRefreshing;
     private boolean isFirst = true;
+    private int page = 1;
 
 
     @Override
@@ -48,10 +49,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        if(isFirst){
-            listView.setRefreshing();
-            return;
-        }
+
         PhotoProtocol.getHomeAttention(stringCallback,page);
     }
 
@@ -96,6 +94,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+
         listView = (PullToRefreshListView) currentView.findViewById(R.id.list);
         data = new ArrayList();
         bannerlist = new ArrayList<>();
@@ -126,7 +125,6 @@ public class HomeFragment extends BaseFragment {
                         page++;
                         PhotoProtocol.getHomeAttention(stringCallback,page);
                         isRefreshing = true;
-                        LogUtil.e("滑到底部");
                     }
                 }
             }
@@ -142,6 +140,7 @@ public class HomeFragment extends BaseFragment {
         listView.setAdapter(mAdapter);
         if(isFirst){
             listView.setRefreshing();
+            return;
         }
     }
 

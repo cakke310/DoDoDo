@@ -4,7 +4,7 @@ package com.doruemi.util;
 public class LogUtil {
 	private static boolean isDebug = true;
 
-	private static String mTag = "DoDo";
+	private static String mTag = "DoRueMi";
 	public static void v(String tag, String msg) {
 		if (isDebug)
 			android.util.Log.v(tag, msg);

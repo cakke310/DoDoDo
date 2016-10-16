@@ -2,6 +2,7 @@ package com.doruemi.fragment;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.doruemi.DosnapApp;
 import com.doruemi.R;
@@ -10,6 +11,7 @@ import com.doruemi.bean.MainPhotoBean;
 import com.doruemi.configs.ConfigConstants;
 import com.doruemi.protocol.PhotoProtocol;
 import com.doruemi.util.LogUtil;
+import com.doruemi.view.CategoryLayout;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
@@ -35,9 +37,13 @@ public class GalleryFragment extends BaseFragment {
     private int page = 1;
     List<MainPhotoBean.PhotoInfoBean> list = new ArrayList<>();
     private CommonAdapter commonAdapter;
-    private boolean isFirst;
+    private boolean isFirst = true;
     private boolean canLoad;
     private RecyclerView recyclerView;
+    private boolean canload = true;
+    private HeaderAndFooterWrapper mHeaderAndFooterWrapper;
+    private CategoryLayout categoryLayout;
+
 
     @Override
     protected void initListener() {
@@ -45,58 +51,19 @@ public class GalleryFragment extends BaseFragment {
     }
 
     @Override
-    protected void initData() {
-        if(isFirst){
-            mPtrRecycleView.setRefreshing();
-            return;
-        }
-        getHttpUtils();
-        recyclerView.setAdapter(commonAdapter);
+    public int setContentViewId() {
+        return R.layout.fragment_search;
     }
 
-    private void getHttpUtils() {
-        PhotoProtocol.getSearchPhotoList(waterFallCallback, page);
-    }
 
-    private StringCallback waterFallCallback = new StringCallback() {
-        @Override
-        public void onError(Call call, Exception e, int id) {
-            mPtrRecycleView.onRefreshComplete();
-        }
-
-        @Override
-        public void onResponse(String response, int id) {
-            processData(response);
-            isFirst = false;
-            mPtrRecycleView.onRefreshComplete();
-        }
-    };
-
-    private void processData(String response) {
-        MainPhotoBean mainPhotoBean = new Gson().fromJson(response, MainPhotoBean.class);
-        handleData(mainPhotoBean);
-    }
-
-    private void handleData(MainPhotoBean mainPhotoBean) {
-        List<MainPhotoBean.PhotoInfoBean> data = mainPhotoBean.getList() != null ? mainPhotoBean.getList() : null;
-        if(data.size()>=15){
-            canLoad = true;
-        }
-        if(page == 1){
-            list.clear();
-        }
-
-        if(data != null){
-            list.addAll(data);
-            commonAdapter.notifyDataSetChanged();
-        }
-//        new HeaderAndFooterWrapper(commonAdapter);
+    @Override
+    protected void initView() {
+        list = new ArrayList<>();
+        mPtrRecycleView = (PullToRefreshRecyclerView) currentView.findViewById(R.id.recycler_view);
         recyclerView = mPtrRecycleView.getRefreshableView();
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), GridLayoutManager.HORIZONTAL));
-
-
         mPtrRecycleView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         mPtrRecycleView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<RecyclerView>() {
             @Override
@@ -120,22 +87,78 @@ public class GalleryFragment extends BaseFragment {
                 }
             }
         });
-        commonAdapter.notifyDataSetChanged();
-
-    }
-
-
-    @Override
-    protected void initView() {
-        mPtrRecycleView = (PullToRefreshRecyclerView) currentView.findViewById(R.id.recycler_view);
-
-
     }
 
     @Override
-    public int setContentViewId() {
-        return R.layout.fragment_search;
+    protected void initData() {
+        getHttpUtils();
+        commonAdapter = new CommonAdapter<MainPhotoBean.PhotoInfoBean>(this.getActivity(),R.layout.item_activity_photo,list) {
+            @Override
+            protected void convert(ViewHolder holder, MainPhotoBean.PhotoInfoBean photoInfoBean, int position) {
+                SimpleDraweeView photoView = holder.getView(R.id.photo);
+                String imgurl = DosnapApp.apiHost +"crop_250x250/"+ photoInfoBean.imgurl
+                        .replaceAll("crop_\\d+x\\d+/", "");
+                DraweeController controller = ConfigConstants.getDraweeController(
+                        ConfigConstants.getImageRequest(photoView, imgurl), photoView);
+                photoView.setController(controller);
+            }
+        };
+        mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(commonAdapter);
+        categoryLayout = new CategoryLayout(getActivity());
+        mHeaderAndFooterWrapper.addHeaderView(categoryLayout);
+        recyclerView.setAdapter(mHeaderAndFooterWrapper);
+//        if(isFirst){
+//            LogUtil.e("shuaxin");
+//            mPtrRecycleView.setRefreshing();
+//            //// TODO: 2016-10-15 刷新没有用
+//        }
+//        categoryLayout.refreshing();
+        mPtrRecycleView.setRefreshing();
+        //getHttpUtils();
     }
+
+    private void getHttpUtils() {
+        PhotoProtocol.getSearchPhotoList(waterFallCallback, page);
+    }
+
+    private StringCallback waterFallCallback = new StringCallback() {
+        @Override
+        public void onError(Call call, Exception e, int id) {
+            mPtrRecycleView.onRefreshComplete();
+        }
+
+        @Override
+        public void onResponse(String response, int id) {
+            LogUtil.e("waterFallCallback"+response);
+            processData(response);
+        }
+    };
+
+
+
+    private void processData(String response) {
+        MainPhotoBean mainPhotoBean = new Gson().fromJson(response, MainPhotoBean.class);
+        List<MainPhotoBean.PhotoInfoBean> data = mainPhotoBean.getList() != null ? mainPhotoBean.getList() : null;
+        canload = data.size() >= 15;
+        if (canload) {
+            mPtrRecycleView.setMode(PullToRefreshBase.Mode.BOTH);
+        } else {
+            mPtrRecycleView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
+        }
+        if(page == 1){
+            list.clear();
+        }
+        list.addAll(data);
+        mHeaderAndFooterWrapper.notifyDataSetChanged();
+        isFirst = false;
+        mPtrRecycleView.onRefreshComplete();
+
+    }
+
+
+
+
+
 
 
 }
