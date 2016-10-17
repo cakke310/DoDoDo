@@ -28,7 +28,7 @@ public class CategoryLayout extends LinearLayout {
     public CategoryLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.mContext = context;
-        LayoutInflater.from(context).inflate(R.layout.layout_category,this);
+        LayoutInflater.from(context).inflate(R.layout.layout_category,null);
     }
 
     private StringCallback categoryCallback = new StringCallback() {

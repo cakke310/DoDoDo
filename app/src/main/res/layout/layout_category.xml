@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/message_gray">
+
+    <RelativeLayout
+        android:id="@+id/rl_recommand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/DIMEN_14DP"
+            android:layout_marginTop="@dimen/DIMEN_4DP"
+            android:text="@string/recommand_user"
+            android:textColor="@color/text_gray2"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/DIMEN_10DP"
+            android:layout_marginRight="@dimen/DIMEN_13DP"
+            android:paddingTop="@dimen/DIMEN_6DP"
+            android:textColor="@color/blue_cc0099e0"
+            android:textSize="12sp"
+            android:text="@string/all"/>
+
+        <it.sephiroth.android.library.widget.HListView
+            android:id="@+id/hlist_recommand"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/DIMEN_172DP"
+            android:layout_marginTop="@dimen/DIMEN_30DP"
+            android:listSelector="@drawable/hlist_selector"
+            android:scrollbars="none"
+            android:fadingEdge="none"
+            android:overScrollMode="never">
+        </it.sephiroth.android.library.widget.HListView>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/DIMEN_34DP"
+        android:gravity="center"
+        android:textColor="@color/gray_c5"
+        android:textSize="16sp"
+        android:text="@string/theme"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/DIMEN_9DP"
+        android:layout_marginRight="@dimen/DIMEN_13DP"
+        android:layout_marginTop="@dimen/DIMEN_15DP"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/DIMEN_14DP"
+        android:paddingBottom="@dimen/DIMEN_10DP"
+        android:paddingTop="@dimen/DIMEN_7DP"
+        android:layout_marginTop="@dimen/DIMEN_16DP"
+        android:text="@string/editor_recommand"
+        android:textColor="@color/text_gray2"
+        android:textSize="14sp"
+        android:background="@color/white"/>
+
+</LinearLayout>

@@ -113,7 +113,7 @@ public class GalleryFragment extends BaseFragment {
 //            //// TODO: 2016-10-15 刷新没有用
 //        }
 //        categoryLayout.refreshing();
-        mPtrRecycleView.setRefreshing();
+        mPtrRecycleView.setRefreshing(true);
         //getHttpUtils();
     }
 

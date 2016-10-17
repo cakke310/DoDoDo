@@ -138,10 +138,11 @@ public class HomeFragment extends BaseFragment {
         bannerView = new BannerView(getActivity());
         listv.addHeaderView(bannerView);
         listView.setAdapter(mAdapter);
-        if(isFirst){
-            listView.setRefreshing();
-            return;
-        }
+//        if(isFirst){
+//            listView.setRefreshing();
+//            return;
+//        }
+        listView.setRefreshing();
     }
 
 
