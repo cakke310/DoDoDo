@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingRight="@dimen/DIMEN_6DP">
+
+    <RelativeLayout
+        android:layout_width="@dimen/DIMEN_132DP"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shadows_3">
+
+        <com.xitek.dosnap.view.AvatarView
+            android:id="@+id/avatarview"
+            android:layout_width="@dimen/DIMEN_80DP"
+            android:layout_height="@dimen/DIMEN_80DP"
+            android:layout_marginTop="@dimen/DIMEN_8DP"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/DIMEN_5DP"
+            android:src="@drawable/icon_close"/>
+
+        <TextView
+            android:id="@+id/tv_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_gray2"
+            android:layout_marginTop="@dimen/DIMEN_4DP"
+            android:layout_below="@+id/avatarview"
+            android:layout_centerHorizontal="true"
+            android:singleLine="true"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_username"
+            android:layout_marginTop="@dimen/DIMEN_6DP"
+            android:layout_centerHorizontal="true"
+            android:text="@string/may_like"
+            android:textSize="11sp"
+            android:textColor="@color/gray_c5"/>
+        
+        <ImageView
+            android:id="@+id/iv_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_like"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/DIMEN_8DP"
+            android:layout_marginBottom="@dimen/DIMEN_8DP"
+            android:src="@drawable/icon_guanzhu"
+            android:gravity="center"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

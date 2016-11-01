@@ -91,7 +91,7 @@ public class GalleryFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        getHttpUtils();
+//        getHttpUtils();
         commonAdapter = new CommonAdapter<MainPhotoBean.PhotoInfoBean>(this.getActivity(),R.layout.item_activity_photo,list) {
             @Override
             protected void convert(ViewHolder holder, MainPhotoBean.PhotoInfoBean photoInfoBean, int position) {
@@ -107,14 +107,8 @@ public class GalleryFragment extends BaseFragment {
         categoryLayout = new CategoryLayout(getActivity());
         mHeaderAndFooterWrapper.addHeaderView(categoryLayout);
         recyclerView.setAdapter(mHeaderAndFooterWrapper);
-//        if(isFirst){
-//            LogUtil.e("shuaxin");
-//            mPtrRecycleView.setRefreshing();
-//            //// TODO: 2016-10-15 刷新没有用
-//        }
-//        categoryLayout.refreshing();
-        mPtrRecycleView.setRefreshing(true);
-        //getHttpUtils();
+        categoryLayout.refreshing();
+        mPtrRecycleView.setRefreshing();
     }
 
     private void getHttpUtils() {
@@ -154,12 +148,6 @@ public class GalleryFragment extends BaseFragment {
         mPtrRecycleView.onRefreshComplete();
 
     }
-
-
-
-
-
-
 
 }
 
