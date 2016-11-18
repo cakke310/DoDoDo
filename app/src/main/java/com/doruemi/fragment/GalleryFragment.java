@@ -108,7 +108,7 @@ public class GalleryFragment extends BaseFragment {
             }
         };
         mHeaderAndFooterWrapper = new HeaderAndFooterWrapper(commonAdapter);
-        categoryLayout = new CategoryLayout(getActivity());
+        categoryLayout = new CategoryLayout(this.getContext());
         mHeaderAndFooterWrapper.addHeaderView(categoryLayout);
         recyclerView.setAdapter(mHeaderAndFooterWrapper);
 
@@ -135,7 +135,7 @@ public class GalleryFragment extends BaseFragment {
 
         @Override
         public void onResponse(String response, int id) {
-            LogUtil.e("waterFallCallback"+response);
+//            LogUtil.e("waterFallCallback"+response);
             processData(response);
         }
     };

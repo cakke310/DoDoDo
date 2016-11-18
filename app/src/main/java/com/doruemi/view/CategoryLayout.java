@@ -56,11 +56,12 @@ public class CategoryLayout extends LinearLayout {
     public CategoryLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.mContext = context;
-        LayoutInflater.from(context).inflate(R.layout.layout_category,null);
-        mTvAll = (TextView) findViewById(R.id.tv_all);
-        mHlistRecommand = (HListView) findViewById(R.id.hlist_recommand);
-        mLayoutRecommand = (RelativeLayout) findViewById(R.id.rl_recommand);
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        LogUtil.e("CategoryLayout init");
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_category, null);
+        mTvAll = (TextView) view.findViewById(R.id.tv_all);
+        mHlistRecommand = (HListView) view.findViewById(R.id.hlist_recommand);
+        mLayoutRecommand = (RelativeLayout) view.findViewById(R.id.rl_recommand);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         categoryData = new ArrayList<>();
         recommandData = new ArrayList<>();
         initData();
@@ -68,8 +69,8 @@ public class CategoryLayout extends LinearLayout {
     }
 
     private void initData() {
-//        mCategoryAdapter = new SearchCategoryAdapter(getContext(), categoryData);
-        mRecommandAdapter = new SearchRecommandAdapter(getContext(), recommandData);
+        mCategoryAdapter = new SearchCategoryAdapter(getContext(), categoryData);
+        mRecommandAdapter = new SearchRecommandAdapter(mContext, recommandData);
         mHlistRecommand.setAdapter(mRecommandAdapter);
 
 //        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2, LinearLayoutManager.VERTICAL,false));
@@ -84,7 +85,7 @@ public class CategoryLayout extends LinearLayout {
 
         @Override
         public void onResponse(String response, int id) {
-            LogUtil.e("categoryData"+response);
+            LogUtil.e("categoryData");
             try {
                 JSONObject obj = new JSONObject(response);
                 String code = obj.getString("code");
@@ -107,7 +108,7 @@ public class CategoryLayout extends LinearLayout {
 
         @Override
         public void onResponse(String response, int id) {
-            LogUtil.e("recommandData---"+response);
+            LogUtil.e("recommandData---");
             JSONArray jsonArray;
             try {
                 jsonArray = new JSONArray(response);
