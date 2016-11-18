@@ -69,5 +69,11 @@ public class SearchRecommandAdapter extends MultiItemTypeAdapter<RecommandUser> 
         });
     }
 
+    public void appendDatas(List<RecommandUser> data) {
+        mDatas.clear();
+        mDatas.addAll(data);
+        this.notifyDataSetChanged();
+    }
+
 
 }

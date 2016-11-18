@@ -1,5 +1,7 @@
 package com.doruemi.fragment;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -71,6 +73,8 @@ public class GalleryFragment extends BaseFragment {
                 PullToRefreshBase.Mode mode = mPtrRecycleView.getCurrentMode();
                 if(mode == PullToRefreshBase.Mode.PULL_FROM_START){
                     page = 1;
+                    categoryLayout.refreshing();
+                    LogUtil.e("categoryLayout refreshing");
                 }
                 getHttpUtils();
             }
@@ -107,8 +111,16 @@ public class GalleryFragment extends BaseFragment {
         categoryLayout = new CategoryLayout(getActivity());
         mHeaderAndFooterWrapper.addHeaderView(categoryLayout);
         recyclerView.setAdapter(mHeaderAndFooterWrapper);
-        categoryLayout.refreshing();
-        mPtrRecycleView.setRefreshing();
+
+//        categoryLayout.refreshing();
+        new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                mPtrRecycleView.setRefreshing();
+                return true;
+            }
+        }).sendEmptyMessageDelayed(0, 300);
+//        mPtrRecycleView.setRefreshing();
     }
 
     private void getHttpUtils() {
@@ -134,15 +146,16 @@ public class GalleryFragment extends BaseFragment {
         MainPhotoBean mainPhotoBean = new Gson().fromJson(response, MainPhotoBean.class);
         List<MainPhotoBean.PhotoInfoBean> data = mainPhotoBean.getList() != null ? mainPhotoBean.getList() : null;
         canload = data.size() >= 15;
+        list = data;
         if (canload) {
             mPtrRecycleView.setMode(PullToRefreshBase.Mode.BOTH);
         } else {
             mPtrRecycleView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);
         }
         if(page == 1){
-            list.clear();
+            commonAdapter.getDatas().clear();
         }
-        list.addAll(data);
+        commonAdapter.getDatas().addAll(list);
         mHeaderAndFooterWrapper.notifyDataSetChanged();
         isFirst = false;
         mPtrRecycleView.onRefreshComplete();

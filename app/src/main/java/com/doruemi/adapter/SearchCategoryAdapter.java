@@ -56,4 +56,10 @@ public class SearchCategoryAdapter extends MultiItemTypeAdapter<CategoryBean.Cat
             }
         });
     }
+
+    public void appendDatas(List<CategoryBean.CategoryInfo> data) {
+        mDatas.clear();
+        mDatas.addAll(data);
+        this.notifyDataSetChanged();
+    }
 }

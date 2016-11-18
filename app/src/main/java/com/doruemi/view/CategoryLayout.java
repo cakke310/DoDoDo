@@ -17,6 +17,7 @@ import com.doruemi.adapter.SearchRecommandAdapter;
 import com.doruemi.bean.CategoryBean;
 import com.doruemi.bean.RecommandUser;
 import com.doruemi.protocol.PhotoProtocol;
+import com.doruemi.util.LogUtil;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -41,6 +42,8 @@ public class CategoryLayout extends LinearLayout {
     private RecyclerView mRecyclerView;
     private List<CategoryBean.CategoryInfo> categoryData;
     private List<RecommandUser> recommandData;
+    private SearchCategoryAdapter mCategoryAdapter;
+    private SearchRecommandAdapter mRecommandAdapter;
 
     public CategoryLayout(Context context) {
         this(context,null);
@@ -65,12 +68,12 @@ public class CategoryLayout extends LinearLayout {
     }
 
     private void initData() {
-        SearchCategoryAdapter searchCategoryAdapter = new SearchCategoryAdapter(getContext(), categoryData);
-        SearchRecommandAdapter searchRecommandAdapter = new SearchRecommandAdapter(getContext(), recommandData);
-        mHlistRecommand.setAdapter(searchRecommandAdapter);
+//        mCategoryAdapter = new SearchCategoryAdapter(getContext(), categoryData);
+        mRecommandAdapter = new SearchRecommandAdapter(getContext(), recommandData);
+        mHlistRecommand.setAdapter(mRecommandAdapter);
 
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2, LinearLayoutManager.VERTICAL,false));
-        mRecyclerView.setAdapter(searchCategoryAdapter);
+//        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2, LinearLayoutManager.VERTICAL,false));
+//        mRecyclerView.setAdapter(mCategoryAdapter);
     }
 
     private StringCallback categoryCallback = new StringCallback() {
@@ -81,12 +84,14 @@ public class CategoryLayout extends LinearLayout {
 
         @Override
         public void onResponse(String response, int id) {
+            LogUtil.e("categoryData"+response);
             try {
                 JSONObject obj = new JSONObject(response);
                 String code = obj.getString("code");
                 if (code.startsWith("S") || code.endsWith("1")) {
                     CategoryBean categoryBean = new Gson().fromJson(response, CategoryBean.class);
                     categoryData = categoryBean.data;
+                    mCategoryAdapter.appendDatas(categoryData);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -102,15 +107,16 @@ public class CategoryLayout extends LinearLayout {
 
         @Override
         public void onResponse(String response, int id) {
+            LogUtil.e("recommandData---"+response);
             JSONArray jsonArray;
             try {
                 jsonArray = new JSONArray(response);
-                if (jsonArray.length() < 1) {
-                    mLayoutRecommand.setVisibility(View.GONE);
-                    return;
-                } else {
-                    mLayoutRecommand.setVisibility(View.VISIBLE);
-                }
+//                if (jsonArray.length() < 1) {
+//                    mLayoutRecommand.setVisibility(View.GONE);
+//                    return;
+//                } else {
+//                    mLayoutRecommand.setVisibility(View.VISIBLE);
+//                }
                 JSONObject jsonObject;
                 RecommandUser bean;
                 List<RecommandUser> list = new ArrayList<>();
@@ -120,6 +126,8 @@ public class CategoryLayout extends LinearLayout {
                     bean = new Gson().fromJson(jsonObject.toString(), RecommandUser.class);
                     list.add(bean);
                 }
+                recommandData = list;
+                mRecommandAdapter.appendDatas(recommandData);
 
             } catch (JSONException e) {
                 e.printStackTrace();
