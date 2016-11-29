@@ -112,6 +112,7 @@ public class GalleryFragment extends BaseFragment {
         mHeaderAndFooterWrapper.addHeaderView(categoryLayout);
         recyclerView.setAdapter(mHeaderAndFooterWrapper);
 
+
 //        categoryLayout.refreshing();
         new Handler(new Handler.Callback() {
             @Override

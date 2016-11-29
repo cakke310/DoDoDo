@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shadows_3">
 
-        <com.xitek.dosnap.view.AvatarView
+        <com.doruemi.view.AvatarView
             android:id="@+id/avatarview"
             android:layout_width="@dimen/DIMEN_80DP"
             android:layout_height="@dimen/DIMEN_80DP"

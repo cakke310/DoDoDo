@@ -18,6 +18,7 @@ import com.doruemi.bean.CategoryBean;
 import com.doruemi.bean.RecommandUser;
 import com.doruemi.protocol.PhotoProtocol;
 import com.doruemi.util.LogUtil;
+import com.doruemi.widget.GridLayoutManagerPlus;
 import com.google.gson.Gson;
 import com.zhy.http.okhttp.callback.StringCallback;
 
@@ -56,8 +57,7 @@ public class CategoryLayout extends LinearLayout {
     public CategoryLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.mContext = context;
-        LogUtil.e("CategoryLayout init");
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_category, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_category, this);
         mTvAll = (TextView) view.findViewById(R.id.tv_all);
         mHlistRecommand = (HListView) view.findViewById(R.id.hlist_recommand);
         mLayoutRecommand = (RelativeLayout) view.findViewById(R.id.rl_recommand);
@@ -70,11 +70,13 @@ public class CategoryLayout extends LinearLayout {
 
     private void initData() {
         mCategoryAdapter = new SearchCategoryAdapter(getContext(), categoryData);
-        mRecommandAdapter = new SearchRecommandAdapter(mContext, recommandData);
+        mRecommandAdapter = new SearchRecommandAdapter(getContext(), recommandData);
         mHlistRecommand.setAdapter(mRecommandAdapter);
 
+        mRecyclerView.setLayoutManager(new GridLayoutManagerPlus(mContext, 2, GridLayoutManager.VERTICAL, false));
+
 //        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2, LinearLayoutManager.VERTICAL,false));
-//        mRecyclerView.setAdapter(mCategoryAdapter);
+        mRecyclerView.setAdapter(mCategoryAdapter);
     }
 
     private StringCallback categoryCallback = new StringCallback() {
@@ -93,6 +95,7 @@ public class CategoryLayout extends LinearLayout {
                     CategoryBean categoryBean = new Gson().fromJson(response, CategoryBean.class);
                     categoryData = categoryBean.data;
                     mCategoryAdapter.appendDatas(categoryData);
+                    LogUtil.e(" mCategoryAdapter.appendDatas");
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -128,6 +131,7 @@ public class CategoryLayout extends LinearLayout {
                     list.add(bean);
                 }
                 recommandData = list;
+                LogUtil.e("mRecommandAdapter.appendDatas");
                 mRecommandAdapter.appendDatas(recommandData);
 
             } catch (JSONException e) {

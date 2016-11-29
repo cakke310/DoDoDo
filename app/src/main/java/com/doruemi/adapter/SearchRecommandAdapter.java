@@ -71,6 +71,7 @@ public class SearchRecommandAdapter extends MultiItemTypeAdapter<RecommandUser> 
     }
 
     public void appendDatas(List<RecommandUser> data) {
+        LogUtil.e("RecommandUser  notifyDataSetChanged"+data.size());
         mDatas.clear();
         mDatas.addAll(data);
         this.notifyDataSetChanged();
