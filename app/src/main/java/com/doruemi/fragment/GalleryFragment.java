@@ -42,7 +42,6 @@ public class GalleryFragment extends BaseFragment {
     private boolean isFirst = true;
     private boolean canLoad;
     private RecyclerView recyclerView;
-    private boolean canload = true;
     private HeaderAndFooterWrapper mHeaderAndFooterWrapper;
     private CategoryLayout categoryLayout;
 
@@ -83,8 +82,13 @@ public class GalleryFragment extends BaseFragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 if(newState == RecyclerView.SCROLL_STATE_IDLE){
+                    LogUtil.e("滑到底部");
                     int lastVisibleItemPosition = gridLayoutManager.findLastVisibleItemPosition();
-                    if(lastVisibleItemPosition >= gridLayoutManager.getItemCount()-5 && canLoad){
+                    LogUtil.e("lastVisibleItemPosition="+lastVisibleItemPosition);
+                    LogUtil.e("gridLayoutManager.getItemCount()/5="+gridLayoutManager.getItemCount()/5);
+                    LogUtil.e("canLoad="+canLoad);
+                    if(lastVisibleItemPosition >= gridLayoutManager.getItemCount()/5 && canLoad){
+                        LogUtil.e("加载更多");
                         page++;
                         getHttpUtils();
                     }
@@ -95,7 +99,6 @@ public class GalleryFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-//        getHttpUtils();
         commonAdapter = new CommonAdapter<MainPhotoBean.PhotoInfoBean>(this.getActivity(),R.layout.item_activity_photo,list) {
             @Override
             protected void convert(ViewHolder holder, MainPhotoBean.PhotoInfoBean photoInfoBean, int position) {
@@ -113,7 +116,6 @@ public class GalleryFragment extends BaseFragment {
         recyclerView.setAdapter(mHeaderAndFooterWrapper);
 
 
-//        categoryLayout.refreshing();
         new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -146,9 +148,9 @@ public class GalleryFragment extends BaseFragment {
     private void processData(String response) {
         MainPhotoBean mainPhotoBean = new Gson().fromJson(response, MainPhotoBean.class);
         List<MainPhotoBean.PhotoInfoBean> data = mainPhotoBean.getList() != null ? mainPhotoBean.getList() : null;
-        canload = data.size() >= 15;
+        canLoad = data.size() >= 15;
         list = data;
-        if (canload) {
+        if (canLoad) {
             mPtrRecycleView.setMode(PullToRefreshBase.Mode.BOTH);
         } else {
             mPtrRecycleView.setMode(PullToRefreshBase.Mode.PULL_FROM_START);

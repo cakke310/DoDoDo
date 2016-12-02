@@ -57,7 +57,7 @@ public class CategoryLayout extends LinearLayout {
     public CategoryLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.mContext = context;
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_category, this);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_category, this, true);
         mTvAll = (TextView) view.findViewById(R.id.tv_all);
         mHlistRecommand = (HListView) view.findViewById(R.id.hlist_recommand);
         mLayoutRecommand = (RelativeLayout) view.findViewById(R.id.rl_recommand);
@@ -73,9 +73,9 @@ public class CategoryLayout extends LinearLayout {
         mRecommandAdapter = new SearchRecommandAdapter(getContext(), recommandData);
         mHlistRecommand.setAdapter(mRecommandAdapter);
 
-        mRecyclerView.setLayoutManager(new GridLayoutManagerPlus(mContext, 2, GridLayoutManager.VERTICAL, false));
+//        mRecyclerView.setLayoutManager(new GridLayoutManagerPlus(mContext, 2, GridLayoutManager.VERTICAL, false));
 
-//        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2, LinearLayoutManager.VERTICAL,false));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2, LinearLayoutManager.VERTICAL,false));
         mRecyclerView.setAdapter(mCategoryAdapter);
     }
 
