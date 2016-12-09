@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.doruemi.DosnapApp;
 import com.doruemi.R;
+import com.doruemi.activity.CategoryDetailActivity;
 import com.doruemi.bean.CategoryBean;
 import com.doruemi.configs.ConfigConstants;
 import com.facebook.drawee.interfaces.DraweeController;
@@ -37,15 +38,15 @@ public class SearchCategoryAdapter extends MultiItemTypeAdapter<CategoryBean.Cat
             }
 
             @Override
-            public void convert(com.zhy.adapter.recyclerview.base.ViewHolder holder, CategoryBean.CategoryInfo categoryInfo, int position) {
+            public void convert(com.zhy.adapter.recyclerview.base.ViewHolder holder, final CategoryBean.CategoryInfo categoryInfo, int position) {
                 holder.setText(R.id.tv_category, categoryInfo.cname);
                 holder.getView(R.id.tv_category).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        Intent intent = new Intent(v.getContext(), CategoryDetailActivity.class);
-//                        intent.putExtra("cid", categoryInfo.cid);
-//                        intent.putExtra("cname", categoryInfo.cname);
-//                        v.getContext().startActivity(intent);
+                        Intent intent = new Intent(v.getContext(), CategoryDetailActivity.class);
+                        intent.putExtra("cid", categoryInfo.cid);
+                        intent.putExtra("cname", categoryInfo.cname);
+                        v.getContext().startActivity(intent);
                     }
                 });
                 String imgurl = DosnapApp.apiHost + categoryInfo.bgcover;

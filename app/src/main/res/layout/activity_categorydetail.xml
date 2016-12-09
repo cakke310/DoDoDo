@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:ptr="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/ll_titlebar"
+        layout="@layout/layout_back_titlebar"/>
+
+    <TextView
+        android:id="@+id/tv_relevant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_titlebar"
+        android:layout_marginLeft="@dimen/DIMEN_14DP"
+        android:layout_marginTop="@dimen/DIMEN_15DP"
+        android:textSize="14sp"
+        android:text="@string/relevant_tag"
+        android:textColor="@color/blue_cc0099e0"/>
+
+    <it.sephiroth.android.library.widget.HListView
+        android:id="@+id/hlist_recommand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_titlebar"
+        android:layout_alignBottom="@+id/span"
+        android:layout_toRightOf="@+id/tv_relevant"
+        android:layout_marginTop="@dimen/DIMEN_13DP"
+        android:listSelector="@drawable/hlist_selector"
+        android:scrollbars="none"
+        android:fadingEdge="none"
+        android:overScrollMode="never"/>
+
+    <View
+        android:id="@+id/span"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/tv_relevant"
+        android:layout_marginTop="@dimen/DIMEN_9DP"
+        android:background="@color/divider_gray"/>
+
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/DIMEN_40DP"
+        android:layout_below="@+id/span"
+        android:layout_marginTop="@dimen/DIMEN_20DP"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_newest"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/DIMEN_5DP"
+            android:text="@string/newest"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:textColor="@color/text_gray2"/>
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/DIMEN_10DP"
+            android:layout_marginBottom="@dimen/DIMEN_10DP"
+            android:background="@color/divider_gray"/>
+
+        <TextView
+            android:id="@+id/tv_hotest"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/DIMEN_5DP"
+            android:text="@string/hotest"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:textColor="@color/gray_c5"/>
+    </LinearLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshRecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="-3dp"
+        android:layout_below="@+id/ll"
+        android:cacheColorHint="#000000"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:scrollbars="none"
+        android:divider="@null"
+        ptr:ptrDrawable="@drawable/ami"
+        ptr:ptrHeaderBackground="@null"
+        ptr:ptrHeaderTextAppearance="?android:attr/textAppearanceSmall"
+        ptr:ptrScrollingWhileRefreshingEnabled="true"/>
+
+
+
+</RelativeLayout>

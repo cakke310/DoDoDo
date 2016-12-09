@@ -71,4 +71,69 @@ public class PhotoProtocol {
                 .build()
                 .execute(callback);
     }
+
+    /**
+     * 关注用户
+     * @param callback  回调
+     * @param userid    用户id
+     */
+    public static void followUser(Callback callback, String userid) {
+        String tlisturl = DosnapApp.apiHost + DosnapApp.apiDir + "Member/following";
+        OkHttpUtils.post().url(tlisturl)
+                .addParams("identifier", DosnapApp.identifier)
+                .addParams("token", DosnapApp.token)
+                .addParams("userid", userid)
+//                .addParams("r", String.valueOf(new Random().nextInt(1000)))
+                .build()
+                .execute(callback);
+    }
+
+    /**
+     * 获取主题标签列表
+     * @param callback  callback
+     * @param cid       主题ID
+     */
+    public static void getCategoryLabel(Callback callback, int cid) {
+        String tlisturl = DosnapApp.apiHost + DosnapApp.apiDir + "theme/tags";
+        OkHttpUtils.get().url(tlisturl)
+                .addParams("identifier", DosnapApp.identifier)
+                .addParams("token", DosnapApp.token)
+                .addParams("cid", cid+"")
+                .build()
+                .execute(callback);
+    }
+
+    /**
+     * 获取主题热门照片
+     * @param callback  callback
+     * @param cid       主题ID
+     */
+    public static void getCategoryHot(Callback callback, int cid) {
+        String tlisturl = DosnapApp.apiHost + DosnapApp.apiDir + "theme/hot";
+        OkHttpUtils.get().url(tlisturl)
+                .addParams("identifier", DosnapApp.identifier)
+                .addParams("token", DosnapApp.token)
+                .addParams("cid", cid+"")
+                .addParams("pagesize", "30")
+                .build()
+                .execute(callback);
+    }
+
+    /**
+     * 获取主题最新图片
+     * @param callback  callback
+     * @param cid       主题ID
+     * @param page      页数
+     */
+    public static void getCategoryNew(Callback callback, int cid, int page) {
+        String tlisturl = DosnapApp.apiHost + DosnapApp.apiDir + "theme/new";
+        OkHttpUtils.get().url(tlisturl)
+                .addParams("identifier", DosnapApp.identifier)
+                .addParams("token", DosnapApp.token)
+                .addParams("cid", cid+"")
+                .addParams("page", page+"")
+                .addParams("pagesize", "15")
+                .build()
+                .execute(callback);
+    }
 }

@@ -1,6 +1,9 @@
 package com.doruemi.view;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.widget.ImageView;
 
 import com.doruemi.DosnapApp;
 import com.doruemi.R;
+import com.doruemi.activity.UserIndexActivity;
 import com.doruemi.configs.ConfigConstants;
 import com.doruemi.util.Utility;
 import com.facebook.drawee.generic.GenericDraweeHierarchy;
@@ -102,14 +106,14 @@ public class AvatarView extends FrameLayout implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-//		AvatarView.this.setClickable(false);
-//		Intent intent = new Intent(v.getContext(), UserIndexActivity.class);
-//		Bundle b = new Bundle();
-//		b.putInt("userid", userid);
-//		b.putString("username", "");
-//		intent.putExtras(b);
-//		((Activity)context).startActivityForResult(intent,
-//				DosnapApp.ACTIVITY_USER);
-//		AvatarView.this.setClickable(true);
+		AvatarView.this.setClickable(false);
+		Intent intent = new Intent(v.getContext(), UserIndexActivity.class);
+		Bundle b = new Bundle();
+		b.putInt("userid", userid);
+		b.putString("username", "");
+		intent.putExtras(b);
+		((Activity)context).startActivityForResult(intent,
+				DosnapApp.ACTIVITY_USER);
+		AvatarView.this.setClickable(true);
     }
 }

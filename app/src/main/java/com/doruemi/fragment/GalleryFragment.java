@@ -82,13 +82,11 @@ public class GalleryFragment extends BaseFragment {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 if(newState == RecyclerView.SCROLL_STATE_IDLE){
-                    LogUtil.e("滑到底部");
                     int lastVisibleItemPosition = gridLayoutManager.findLastVisibleItemPosition();
                     LogUtil.e("lastVisibleItemPosition="+lastVisibleItemPosition);
                     LogUtil.e("gridLayoutManager.getItemCount()/5="+gridLayoutManager.getItemCount()/5);
                     LogUtil.e("canLoad="+canLoad);
                     if(lastVisibleItemPosition >= gridLayoutManager.getItemCount()/5 && canLoad){
-                        LogUtil.e("加载更多");
                         page++;
                         getHttpUtils();
                     }

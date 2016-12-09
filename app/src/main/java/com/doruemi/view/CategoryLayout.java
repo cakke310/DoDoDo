@@ -45,6 +45,7 @@ public class CategoryLayout extends LinearLayout {
     private List<RecommandUser> recommandData;
     private SearchCategoryAdapter mCategoryAdapter;
     private SearchRecommandAdapter mRecommandAdapter;
+    private RelativeLayout mRlrecomand;
 
     public CategoryLayout(Context context) {
         this(context,null);
@@ -62,6 +63,7 @@ public class CategoryLayout extends LinearLayout {
         mHlistRecommand = (HListView) view.findViewById(R.id.hlist_recommand);
         mLayoutRecommand = (RelativeLayout) view.findViewById(R.id.rl_recommand);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        mRlrecomand = (RelativeLayout) findViewById(R.id.rl_recommand);
         categoryData = new ArrayList<>();
         recommandData = new ArrayList<>();
         initData();
@@ -70,7 +72,7 @@ public class CategoryLayout extends LinearLayout {
 
     private void initData() {
         mCategoryAdapter = new SearchCategoryAdapter(getContext(), categoryData);
-        mRecommandAdapter = new SearchRecommandAdapter(getContext(), recommandData);
+        mRecommandAdapter = new SearchRecommandAdapter(getContext(), recommandData, mRlrecomand);
         mHlistRecommand.setAdapter(mRecommandAdapter);
 
 //        mRecyclerView.setLayoutManager(new GridLayoutManagerPlus(mContext, 2, GridLayoutManager.VERTICAL, false));

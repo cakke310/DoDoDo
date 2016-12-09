@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Administrator on 2016/10/19.
  */
 public class SearchRecommandAdapter extends MultiItemTypeAdapter<RecommandUser> {
-    public SearchRecommandAdapter(Context context, List<RecommandUser> datas) {
+    public SearchRecommandAdapter(Context context, List<RecommandUser> datas, final View parent) {
         super(context, datas);
         addItemViewDelegate(new ItemViewDelegate<RecommandUser>() {
             @Override
@@ -33,8 +33,7 @@ public class SearchRecommandAdapter extends MultiItemTypeAdapter<RecommandUser> 
             }
 
             @Override
-            public void convert(ViewHolder holder, RecommandUser recommandUser, int position) {
-                LogUtil.e("recommandUser.userid"+recommandUser.userid);
+            public void convert(ViewHolder holder, final RecommandUser recommandUser, final int position) {
                 AvatarView avatarView = holder.getView(R.id.avatarview);
                 avatarView.set(recommandUser.userid, 0, true);
 
@@ -42,28 +41,31 @@ public class SearchRecommandAdapter extends MultiItemTypeAdapter<RecommandUser> 
 
                 final ImageView ivFollow = holder.getView(R.id.iv_follow);
                 int tag = ivFollow.getTag() == null ? 0 : (int) ivFollow.getTag();
-//                if (tag == recommandUser.userid) {
-//                    setDisable(ivFollow);
-//                } else {
-//                    setEnable(ivFollow);
-//                }
+                if (tag == recommandUser.userid) {
+                    setDisable(ivFollow);
+                } else {
+                    setEnable(ivFollow);
+                }
                 ivFollow.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        PhotoProtocol.followUser(null, recommandUser.userid + "");
-//                        setDisable(ivFollow);
-//                        ivFollow.setTag(recommandUser.userid);
+                        PhotoProtocol.followUser(null, recommandUser.userid + "");
+                        setDisable(ivFollow);
+                        ivFollow.setTag(recommandUser.userid);
+                        mDatas.remove(position);
+                        SearchRecommandAdapter.this.notifyDataSetChanged();
+
                     }
                 });
 
                 holder.getView(R.id.iv_cancel).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        mDatas.remove(position);
-//                        SearchRecommandAdapter.this.notifyDataSetChanged();
-//                        if (mDatas.size() < 1) {
-//                            parent.setVisibility(View.GONE);
-//                        }
+                        mDatas.remove(position);
+                        SearchRecommandAdapter.this.notifyDataSetChanged();
+                        if (mDatas.size() < 1) {
+                            parent.setVisibility(View.GONE);
+                        }
                     }
                 });
             }
@@ -71,10 +73,19 @@ public class SearchRecommandAdapter extends MultiItemTypeAdapter<RecommandUser> 
     }
 
     public void appendDatas(List<RecommandUser> data) {
-        LogUtil.e("RecommandUser  notifyDataSetChanged"+data.size());
         mDatas.clear();
         mDatas.addAll(data);
         this.notifyDataSetChanged();
+    }
+
+    private void setDisable(ImageView iv) {
+        iv.setImageResource(R.drawable.icon_yiguanzhu);
+        iv.setEnabled(false);
+    }
+
+    private void setEnable(ImageView iv) {
+        iv.setEnabled(true);
+        iv.setImageResource(R.drawable.icon_guanzhu);
     }
 
 

@@ -43,6 +43,8 @@
         <activity android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"></activity>
         <activity android:name=".activity.PhotoShowActivity"/>
+        <activity android:name=".activity.CategoryDetailActivity"/>
+        <activity android:name=".activity.UserIndexActivity"/>
         <activity android:name=".wxapi.WXEntryActivity" android:exported="true"/>
 
     </application>

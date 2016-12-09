@@ -17,12 +17,13 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtil.e("WXEntryActivity onCreate");
         DosnapApp.mWeixinAPI.handleIntent(getIntent(),this);
     }
 
     @Override
     public void onReq(BaseReq baseReq) {
-
+        LogUtil.e("onReq"+baseReq.toString());
     }
 
     @Override
