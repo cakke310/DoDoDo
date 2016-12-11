@@ -1,62 +1,73 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical" >
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <data>
+        <variable
+            name="bean"
+            type="com.doruemi.bean.MyFragmentBean"/>
+        <variable
+            name="frag"
+            type="com.doruemi.fragment.MyFragment"/>
+    </data>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/DIMEN_42DP"
-        android:gravity="center_vertical"
-        android:background="@android:color/white">
-
-        <ImageView
-            android:id="@+id/more"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:padding="@dimen/DIMEN_12DP"
-            android:layout_marginRight="@dimen/DIMEN_12DP"
-            android:layout_alignParentRight="true"
-            android:clickable="true"
-            android:onClick="sharehomepage"
-            android:src="@drawable/user_icon_more" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_centerInParent="true"
-            android:text="@string/myhome"
-            android:textSize="16sp"
-            android:textColor="@color/text_gray" />
-
-        <ImageView
-            android:id="@+id/addFriend"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:padding="@dimen/DIMEN_12DP"
-            android:layout_marginLeft="@dimen/DIMEN_20DP"
-            android:src="@drawable/user_icon_add" />
-
-        <ImageView
-            android:id="@+id/setting"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerVertical="true"
-            android:padding="@dimen/DIMEN_12DP"
-            android:contentDescription="@string/btninfo_set"
-            android:layout_toLeftOf="@+id/more"
-            android:src="@drawable/user_icon_system" />
-    </RelativeLayout>
-
-    <View
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="1px"
-        android:background="@color/dosnapgray" />
+        android:layout_height="fill_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
 
-    <!--<com.xitek.dosnap.view.UserListView-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/DIMEN_42DP"
+            android:background="@android:color/white"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/more"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/DIMEN_12DP"
+                android:clickable="true"
+                android:onClick="sharehomepage"
+                android:padding="@dimen/DIMEN_12DP"
+                android:src="@drawable/user_icon_more" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@{bean.name}"
+                android:textColor="@color/text_gray"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/addFriend"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/DIMEN_20DP"
+                android:padding="@dimen/DIMEN_12DP"
+                android:src="@drawable/user_icon_add" />
+
+            <ImageView
+                android:id="@+id/setting"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/more"
+                android:contentDescription="@string/btninfo_set"
+                android:padding="@dimen/DIMEN_12DP"
+                android:src="@drawable/user_icon_system" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/dosnapgray" />
+
+        <!--<com.xitek.dosnap.view.UserListView-->
         <!--xmlns:ptr="http://schemas.android.com/apk/res-auto"-->
         <!--android:id="@+id/list"-->
         <!--android:layout_width="match_parent"-->
@@ -65,6 +76,7 @@
         <!--android:scrollbars="none"-->
         <!--ptr:ptrDrawable="@drawable/ami"-->
         <!--ptr:ptrHeaderTextAppearance="?android:attr/textAppearanceSmall" >-->
-    <!--</com.xitek.dosnap.view.UserListView>-->
+        <!--</com.xitek.dosnap.view.UserListView>-->
 
-</LinearLayout>
+    </LinearLayout>
+</layout>
