@@ -46,6 +46,7 @@
         <activity android:name=".activity.CategoryDetailActivity"/>
         <activity android:name=".activity.UserIndexActivity"/>
         <activity android:name=".wxapi.WXEntryActivity" android:exported="true"/>
+        <activity android:name=".activity.PhotoActivity"/>
 
     </application>
 

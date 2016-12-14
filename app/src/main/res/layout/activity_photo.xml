@@ -1,0 +1,35 @@
+<LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <include
+        layout="@layout/layout_back_titlebar"/>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        xmlns:ptr="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="#000000"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false"
+        android:scrollbars="none"
+        android:divider="@color/dosnapgray"
+        android:dividerHeight="5dp"
+        ptr:ptrHeaderTextAppearance="?android:attr/textAppearanceSmall"
+        ptr:ptrScrollingWhileRefreshingEnabled="false"
+        ptr:ptrDrawable="@drawable/ami"
+        ptr:ptrHeaderBackground="@null" >
+    </com.handmark.pulltorefresh.library.PullToRefreshListView>
+
+    <!--<include-->
+        <!--layout="@layout/sub_comment" />-->
+</LinearLayout>
