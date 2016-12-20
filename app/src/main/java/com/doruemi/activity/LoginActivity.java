@@ -51,6 +51,7 @@ public class LoginActivity extends BaseActivity{
     private StringCallback phoneLoginCallback = new StringCallback() {
         @Override
         public void onError(Call call, Exception e, int id) {
+            LogUtil.e("phoneLoginCallback="+e.toString());
 
         }
 

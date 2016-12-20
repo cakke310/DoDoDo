@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/horizontalListView/horizontalListView.iml" filepath="$PROJECT_DIR$/horizontalListView/horizontalListView.iml" />
       <module fileurl="file://$PROJECT_DIR$/pullToRefresh/pullToRefresh.iml" filepath="$PROJECT_DIR$/pullToRefresh/pullToRefresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pvlib/pvlib.iml" filepath="$PROJECT_DIR$/pvlib/pvlib.iml" />
     </modules>
   </component>
 </project>

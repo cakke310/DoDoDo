@@ -153,6 +153,7 @@ public class ConfigConstants {
 				// .setRequestListeners(requestListeners)//图片请求监听
 				// .setResizeAndRotateEnabledForNetwork(boolean
 				// resizeAndRotateEnabledForNetwork)//调整和旋转是否支持网络图片
+				.setDownsampleEnabled(true)
 				.setSmallImageDiskCacheConfig(diskSmallCacheConfig)// 磁盘缓存配置（小图片，可选～三级缓存的小图优化缓存）
 		;
 		return configBuilder.build();

@@ -7,8 +7,10 @@ import android.view.View;
 
 import com.doruemi.DosnapApp;
 import com.doruemi.R;
+import com.doruemi.activity.PhotoActivity;
 import com.doruemi.bean.ThemePhotoBean;
 import com.doruemi.configs.ConfigConstants;
+import com.doruemi.util.LogUtil;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
@@ -35,7 +37,7 @@ public class ThemeDetailAdapterN extends MultiItemTypeAdapter<ThemePhotoBean> {
             }
 
             @Override
-            public void convert(ViewHolder holder, ThemePhotoBean item, int position) {
+            public void convert(ViewHolder holder, final ThemePhotoBean item, int position) {
                 SimpleDraweeView photoView = holder.getView(R.id.photo);
                 String imgurl = DosnapApp.apiHost +"crop_250x250/"+ item.imgurl
                         .replaceAll("crop_\\d+x\\d+/", "");
@@ -45,11 +47,11 @@ public class ThemeDetailAdapterN extends MultiItemTypeAdapter<ThemePhotoBean> {
                 photoView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        Intent intent = new Intent(v.getContext(), PhotoActivity.class);
-//                        Bundle bundle = new Bundle();
-//                        bundle.putInt("id", item.id);
-//                        intent.putExtras(bundle);
-//                        v.getContext().startActivity(intent);
+                        Intent intent = new Intent(v.getContext(), PhotoActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("url", item.imgurl);
+                        intent.putExtras(bundle);
+                        v.getContext().startActivity(intent);
                     }
                 });
             }

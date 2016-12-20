@@ -15,4 +15,5 @@
         fresco:placeholderImage="@color/message_gray"
         fresco:viewAspectRatio="1.00" />
 
+
 </LinearLayout>

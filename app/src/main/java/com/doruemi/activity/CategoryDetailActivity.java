@@ -208,7 +208,7 @@ public class CategoryDetailActivity extends Activity implements View.OnClickList
     private StringCallback hotCallback = new StringCallback() {
         @Override
         public void onError(Call call, Exception e, int id) {
-            e.printStackTrace();
+            LogUtil.e("hotCallback="+e.toString());
         }
 
         @Override
@@ -239,11 +239,12 @@ public class CategoryDetailActivity extends Activity implements View.OnClickList
         public void onError(Call call, Exception e, int id) {
             e.printStackTrace();
             mPtrRecycleView.onRefreshComplete();
+            LogUtil.e("detailCallback error"+e.toString());
         }
 
         @Override
         public void onResponse(String response, int id) {
-//            LogUtil.e("detailCallback="+response);
+            LogUtil.e("detailCallback="+response);
             try {
                 JSONObject obj = new JSONObject(response);
                 String code = obj.getString("code");
